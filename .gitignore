@@ -6,3 +6,9 @@ dist/
 .venv/
 *.log
 *.tsbuildinfo
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+backend/app.db
+backend/app_data/

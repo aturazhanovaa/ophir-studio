@@ -1,3 +1,4 @@
+import { getPersistedLocale } from "../i18n/locale";
 export const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
 export function setToken(token) {
     localStorage.setItem("skh_token", token);
@@ -15,6 +16,9 @@ async function request(path, init = {}) {
     };
     if (token)
         headers["Authorization"] = `Bearer ${token}`;
+    const locale = getPersistedLocale();
+    if (locale)
+        headers["Accept-Language"] = locale;
     let res;
     const url = `${API_BASE}${path}`;
     try {

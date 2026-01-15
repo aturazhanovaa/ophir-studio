@@ -437,10 +437,12 @@ def _dedupe_ranked(candidates: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     return out
 
 
-def _render_sources_section(sources: List[Dict[str, Any]]) -> str:
+def _render_sources_section(sources: List[Dict[str, Any]], locale: str = "en") -> str:
+    label = "Fonti" if (locale or "").lower().startswith("it") else "Sources"
     if not sources:
-        return "Sources:\n- (no matching sources found)"
-    lines = ["Sources:"]
+        none_line = "- (nessuna fonte trovata)" if label == "Fonti" else "- (no matching sources found)"
+        return f"{label}:\n{none_line}"
+    lines = [f"{label}:"]
     for s in sources[:8]:
         title = s.get("document_title") or f"Document {s.get('document_id')}"
         chunk_index = s.get("chunk_index")
@@ -452,8 +454,8 @@ def _render_sources_section(sources: List[Dict[str, Any]]) -> str:
     return "\n".join(lines)
 
 
-def build_prompt_style(accuracy_level: AccuracyLevel, answer_tone: AnswerTone) -> str:
-    guide = get_tone_guide(answer_tone)
+def build_prompt_style(accuracy_level: AccuracyLevel, answer_tone: AnswerTone, locale: str = "en") -> str:
+    guide = get_tone_guide(answer_tone, locale=locale)
     if accuracy_level == AccuracyLevel.HIGH:
         accuracy_block = (
             "Accuracy: HIGH. Use only evidence from the snippets. Double-check consistency. "
@@ -527,6 +529,7 @@ def answer_with_rag(
     top_k: int = 6,
     accuracy_level: AccuracyLevel = AccuracyLevel.MEDIUM,
     answer_tone: AnswerTone = AnswerTone.C_EXECUTIVE,
+    locale: str = "en",
     chat_history: Optional[List[Dict[str, str]]] = None,
 ) -> Dict[str, Any]:
     retrieval_start = time.time()
@@ -563,7 +566,7 @@ def answer_with_rag(
     top_context = ranked[:top_k]
     best_score = top_context[0]["score"] if top_context else 0.0
     evidence_level = _evidence_level(best_score, len(top_context))
-    tone_guide = get_tone_guide(answer_tone)
+    tone_guide = get_tone_guide(answer_tone, locale=locale)
 
     sources = [
         {
@@ -590,7 +593,7 @@ def answer_with_rag(
             "Try naming the area, document title, or a specific keyword, and I’ll search again."
         )
         return {
-            "answer": f"{msg}\n\n{_render_sources_section(sources)}",
+            "answer": f"{msg}\n\n{_render_sources_section(sources, locale=locale)}",
             "sources": sources,
             "matches": sources,
             "best_score": float(best_score),
@@ -628,7 +631,7 @@ def answer_with_rag(
         if excerpts:
             answer = answer + "\n" + "\n".join([f"- {e}" for e in excerpts])
         return {
-            "answer": f"{answer}\n\n{_render_sources_section(sources)}",
+            "answer": f"{answer}\n\n{_render_sources_section(sources, locale=locale)}",
             "sources": sources,
             "matches": sources,
             "best_score": float(best_score),
@@ -662,14 +665,28 @@ def answer_with_rag(
     context = "\n\n".join(context_blocks).strip() or "(no context retrieved)"
 
     fmt = tone_guide.formatting
+    sources_label = "Fonti" if (locale or "").lower().startswith("it") else "Sources"
+    language_rule = (
+        "Respond in Italian. " if (locale or "").lower().startswith("it") else "Respond in English. "
+    )
+    heading_guard = ""
+    if (locale or "").lower().startswith("it"):
+        heading_guard = (
+            "Hard rule: section headings must be in Italian. "
+            "Do NOT use these English headings: Quick answer, How to do it, Watch out for, Next steps, Sources. "
+            "If you include those sections, use exactly: Risposta rapida:, Come fare:, Attenzione:, Prossimi passi:, Fonti:."
+        )
     system = (
         "You are the Studio Knowledge Copilot. Use ONLY the provided context; do not invent facts. "
+        + language_rule
+        + heading_guard
+        + " "
         "If the question cannot be answered from context, say so clearly. "
         f"Use headings in this order: {', '.join(fmt.headings)}. "
         f"Keep bullets to {fmt.max_bullets} or fewer, sentences {fmt.max_sentences} or fewer, and use {fmt.sentence_length}. "
-        "Always end with a 'Sources' section listing the referenced docs/chunks."
-        + build_prompt_style(accuracy_level, answer_tone)
-        + "\n\nAppend this final section:\nSources:\n- <document title> (chunk N)\n"
+        f"Always end with a '{sources_label}' section listing the referenced docs/chunks."
+        + build_prompt_style(accuracy_level, answer_tone, locale=locale)
+        + f"\n\nAppend this final section:\n{sources_label}:\n- <document title> (chunk N)\n"
     )
     user_msg = f"Question: {query}\n\nContext:\n{context}"
 
@@ -692,8 +709,8 @@ def answer_with_rag(
     generation_ms = int((time.time() - gen_start) * 1000)
 
     answer = (resp.choices[0].message.content or "").strip()
-    if "sources" not in answer.lower():
-        answer = f"{answer}\n\n{_render_sources_section(sources)}"
+    if (sources_label.lower() not in answer.lower()):
+        answer = f"{answer}\n\n{_render_sources_section(sources, locale=locale)}"
     usage = getattr(resp, "usage", None)
     usage_block = {
         "prompt_tokens": getattr(usage, "prompt_tokens", None) if usage else None,

@@ -17,8 +17,10 @@ export default function LocaleLayout() {
     if (!locale) {
         const detected = detectLocale();
         const parts = location.pathname.split("/").filter(Boolean);
-        const restPath = "/" + parts.slice(1).join("/");
-        return _jsx(Navigate, { to: `/${detected}${restPath === "/" ? "" : restPath}${location.search}${location.hash}`, replace: true });
+        const looksLikeLocale = /^[a-z]{2}(-[a-z]{2})?$/i.test(parts[0] ?? "");
+        const restParts = parts.length <= 1 ? parts : looksLikeLocale ? parts.slice(1) : parts;
+        const restPath = restParts.length ? `/${restParts.join("/")}` : "";
+        return _jsx(Navigate, { to: `/${detected}${restPath}${location.search}${location.hash}`, replace: true });
     }
     return _jsx(Outlet, {});
 }

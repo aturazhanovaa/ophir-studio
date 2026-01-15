@@ -137,7 +137,7 @@ export default function Dashboard() {
       <div className="pageContainer">
         <Routes>
           <Route
-            path="/:locale/dashboard"
+            path="dashboard"
             element={
               <OverviewPage
                 areas={areas}
@@ -150,9 +150,9 @@ export default function Dashboard() {
               />
             }
           />
-              <Route path="/:locale/areas" element={<Navigate to={`/${locale}/access`} replace />} />
+              <Route path="areas" element={<Navigate to="../access" replace />} />
               <Route
-                path="/:locale/access"
+                path="access"
                 element={
                   <AccessCenterPage
                     areas={areas}
@@ -166,7 +166,7 @@ export default function Dashboard() {
                 }
               />
               <Route
-                path="/:locale/documents"
+                path="documents"
                 element={
                   <DocumentsPage
                     areaId={selectedAreaId}
@@ -176,10 +176,10 @@ export default function Dashboard() {
                   />
                 }
               />
-              <Route path="/:locale/case-studies" element={<CaseStudiesPage />} />
-              <Route path="/:locale/knowledge-base" element={<KnowledgeBasePage />} />
+              <Route path="case-studies" element={<CaseStudiesPage />} />
+              <Route path="knowledge-base" element={<KnowledgeBasePage />} />
               <Route
-                path="/:locale/documents/:docId"
+                path="documents/:docId"
                 element={
                   <DocumentDetailsPage
                     areas={areas}
@@ -188,10 +188,10 @@ export default function Dashboard() {
                   />
                 }
               />
-              <Route path="/:locale/playground" element={<PlaygroundPage />} />
-              <Route path="/:locale/analytics" element={<AnalyticsPanel areaId={selectedAreaId} areas={areas} />} />
+              <Route path="playground" element={<PlaygroundPage />} />
+              <Route path="analytics" element={<AnalyticsPanel areaId={selectedAreaId} areas={areas} />} />
               <Route
-                path="/:locale/ask"
+                path="ask"
                 element={
                   <AskAIPage
                     areas={areas}
@@ -201,7 +201,7 @@ export default function Dashboard() {
                 }
               />
               <Route
-                path="/:locale/admin/users"
+                path="admin/users"
                 element={
                   user?.role === "SUPER_ADMIN" ? (
                     <UsersPanel
@@ -217,7 +217,7 @@ export default function Dashboard() {
                 }
               />
               <Route
-                path="/:locale/admin/tags"
+                path="admin/tags"
                 element={
                   user?.role === "SUPER_ADMIN" || user?.role === "ADMIN" ? (
                     <TagsAdminPage />
@@ -227,7 +227,7 @@ export default function Dashboard() {
                 }
               />
               <Route
-                path="/:locale/admin/verify"
+                path="admin/verify"
                 element={
                   user?.role === "SUPER_ADMIN" || user?.role === "ADMIN" ? (
                     <VerifyPage />
@@ -237,7 +237,7 @@ export default function Dashboard() {
                 }
               />
               <Route
-                path="/:locale/admin/requests"
+                path="admin/requests"
                 element={
                   user?.role === "SUPER_ADMIN" ? (
                     <AccessRequestsPanel
@@ -253,7 +253,7 @@ export default function Dashboard() {
                 }
               />
               <Route
-                path="/:locale/admin/settings"
+                path="admin/settings"
                 element={
                   user?.role === "SUPER_ADMIN" ? (
                     <div className="card">

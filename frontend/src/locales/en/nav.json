@@ -1,0 +1,25 @@
+{
+  "navigation": "Navigation",
+  "menu": "Menu",
+  "admin": "Admin",
+  "hide": "Hide",
+  "show": "Show",
+  "aria": {
+    "openNavigation": "Open navigation",
+    "closeNavigation": "Close navigation"
+  },
+  "items": {
+    "dashboard": "Dashboard",
+    "documents": "Documents",
+    "knowledgeBase": "Knowledge Base",
+    "askAi": "Ask AI",
+    "playground": "Playground",
+    "analytics": "Analytics",
+    "access": "Access",
+    "tagAdmin": "Tag Admin",
+    "verification": "Verification",
+    "users": "Users",
+    "accessRequests": "Access Requests",
+    "settings": "Settings"
+  }
+}

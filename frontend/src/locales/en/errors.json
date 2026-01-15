@@ -1,0 +1,8 @@
+{
+  "unexpected": "Unexpected error.",
+  "somethingWentWrong": "Something went wrong",
+  "couldNotRender": "We could not render this page.",
+  "errorPrefix": "Error: {{message}}",
+  "invalidLocale": "Unsupported language in URL. Redirecting…"
+}
+

@@ -1,0 +1,8 @@
+{
+  "unexpected": "Errore imprevisto.",
+  "somethingWentWrong": "Qualcosa è andato storto",
+  "couldNotRender": "Non è stato possibile mostrare questa pagina.",
+  "errorPrefix": "Errore: {{message}}",
+  "invalidLocale": "Lingua non supportata nell'URL. Reindirizzamento…"
+}
+

@@ -1,0 +1,25 @@
+{
+  "navigation": "Navigazione",
+  "menu": "Menu",
+  "admin": "Admin",
+  "hide": "Nascondi",
+  "show": "Mostra",
+  "aria": {
+    "openNavigation": "Apri navigazione",
+    "closeNavigation": "Chiudi navigazione"
+  },
+  "items": {
+    "dashboard": "Dashboard",
+    "documents": "Documenti",
+    "knowledgeBase": "Base di conoscenza",
+    "askAi": "Chiedi all'AI",
+    "playground": "Playground",
+    "analytics": "Analisi",
+    "access": "Accesso",
+    "tagAdmin": "Gestione tag",
+    "verification": "Verifica",
+    "users": "Utenti",
+    "accessRequests": "Richieste accesso",
+    "settings": "Impostazioni"
+  }
+}

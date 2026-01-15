@@ -1,0 +1,33 @@
+import React from "react";
+
+export type AreaBadgeProps = {
+  name: string;
+  color?: string | null;
+  size?: "sm" | "md";
+};
+
+function parseHex(color?: string | null) {
+  const hex = (color || "").trim();
+  const match = /^#?([0-9a-fA-F]{6})$/.exec(hex);
+  if (!match) return { r: 75, g: 85, b: 99 }; // neutral slate fallback
+  const intVal = parseInt(match[1], 16);
+  return {
+    r: (intVal >> 16) & 255,
+    g: (intVal >> 8) & 255,
+    b: intVal & 255,
+  };
+}
+
+export default function AreaBadge({ name, color, size = "md" }: AreaBadgeProps) {
+  const { r, g, b } = parseHex(color);
+  const bg = `rgba(${r}, ${g}, ${b}, 0.12)`;
+  const border = `rgba(${r}, ${g}, ${b}, 0.28)`;
+  const text = `rgb(${r}, ${g}, ${b})`;
+
+  return (
+    <span className={`areaBadge areaBadge-${size}`} style={{ backgroundColor: bg, borderColor: border, color: text }}>
+      <span className="areaDot" style={{ backgroundColor: text }} />
+      <span className="areaName">{name}</span>
+    </span>
+  );
+}

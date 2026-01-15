@@ -1,0 +1,856 @@
+{
+  "breadcrumb": "Workspace",
+  "primaryAction": "Access Center",
+  "pageTitles": {
+    "dashboard": "Dashboard",
+    "accessCenter": "Access Center",
+    "documentDetails": "Document Details",
+    "documents": "Documents",
+    "caseStudies": "Case Studies & Proof",
+    "analytics": "Analytics",
+    "knowledgeBase": "Knowledge Base",
+    "adminUsers": "Admin - Users",
+    "adminTags": "Admin - Tags",
+    "verification": "Verification",
+    "adminAccessRequests": "Admin - Access Requests",
+    "adminSettings": "Admin - Settings",
+    "askAi": "Ask AI",
+    "playground": "Playground",
+    "workspace": "Workspace"
+  },
+  "overview": {
+    "areasAvailable": "Areas available",
+    "areasYouCanAccess": "Areas you can access",
+    "noAreasCreated": "No areas created yet.",
+    "requestAccessToBegin": "Request access to begin.",
+    "quickActions": "Quick actions",
+    "jumpToWorkflows": "Jump to key workflows",
+    "documentsTitle": "Documents",
+    "documentsDesc": "Search, filter, and manage files.",
+    "askAiTitle": "Ask AI",
+    "askAiDesc": "Draft answers with approved sources.",
+    "accessCenterTitle": "Access Center",
+    "accessCenterDesc": "Review access and request new areas."
+  }
+  ,
+  "documents": {
+    "empty": {
+      "pickAreaTitle": "Pick an area to see documents",
+      "pickAreaText": "Select a workspace from the top bar to load its files."
+    },
+    "toolbar": {
+      "eyebrow": "Documents",
+      "subtitle": "Search, sort, and manage files without leaving this page.",
+      "closeUpload": "Close upload"
+    },
+    "upload": {
+      "eyebrow": "Upload",
+      "title": "Add a new document"
+    },
+    "messages": {
+      "uploaded": "Document uploaded."
+    },
+    "errors": {
+      "selectAreaFirst": "Select an area first.",
+      "titleAndFileRequired": "Title and file are required.",
+      "failedToLoad": "Failed to load documents",
+      "uploadFailed": "Upload failed"
+    },
+    "actions": {
+      "rename": "Rename",
+      "newVersion": "New version"
+    },
+    "list": {
+      "allFilesForArea": "All files for this area",
+      "searchByTitle": "Search by title",
+      "filterByTag": "Filter by tag (comma separated)",
+      "deleted": "Deleted",
+      "sort": {
+        "latest": "Latest",
+        "oldest": "Oldest",
+        "mostUsed": "Most used"
+      },
+      "columns": {
+        "tags": "Tags",
+        "versions": "Versions",
+        "actions": "Actions"
+      },
+      "empty": {
+        "title": "No documents",
+        "text": "Upload a document to start searching and chatting."
+      }
+    }
+    ,
+    "uploadModal": {
+      "title": "Upload document",
+      "subtitle": "We will chunk and embed it for RAG.",
+      "titlePlaceholder": "Q1 Sales Pitch",
+      "tags": "Tags",
+      "tagsPlaceholder": "product, sales, internal"
+    },
+    "editModal": {
+      "title": "Edit document",
+      "tags": "Tags"
+    },
+    "drawer": {
+      "title": "Document details",
+      "notFoundText": "Try reopening from the list.",
+      "fileName": "File name",
+      "refreshList": "Refresh list",
+      "fromRowMenu": "From row menu",
+      "metadata": {
+        "title": "Metadata",
+        "subtitle": "Rename and retag the document."
+      },
+      "versioning": {
+        "subtitle": "Keep history intact for every change."
+      },
+      "versions": {
+        "subtitle": "Full history with downloads."
+      }
+    }
+    ,
+    "detailPanel": {
+      "eyebrow": "Details",
+      "empty": {
+        "title": "Select a document",
+        "text": "Choose a document to view metadata and versions."
+      }
+    }
+    ,
+    "contextPanel": {
+      "empty": {
+        "text": "Choose a document to view details."
+      }
+    }
+  },
+  "documentDetails": {
+    "eyebrow": "Document",
+    "fileFallback": "file",
+    "empty": {
+      "noneTitle": "No document selected",
+      "noneText": "Open a document from the list to see details.",
+      "notFoundTitle": "Document not found",
+      "notFoundText": "Check the link or return to the list."
+    },
+    "messages": {
+      "saved": "Details saved.",
+      "versionUploaded": "New version uploaded.",
+      "confirmDelete": "Click delete again to confirm."
+    },
+    "errors": {
+      "unableToLoad": "Unable to load document",
+      "failedToSave": "Failed to save changes",
+      "chooseFile": "Choose a file to upload.",
+      "deleteFailed": "Delete failed",
+      "downloadFailed": "Download failed"
+    },
+    "actions": {
+      "saving": "Saving...",
+      "deleting": "Deleting..."
+    },
+    "versioning": {
+      "eyebrow": "Versioning",
+      "title": "Upload new version",
+      "uploadVersion": "Upload version"
+    },
+    "versions": {
+      "eyebrow": "Versions",
+      "title": "History",
+      "uploaded": "Uploaded",
+      "none": "No versions yet."
+    },
+    "danger": {
+      "eyebrow": "Danger",
+      "title": "Delete document",
+      "subtitle": "This will soft-delete the document. Restore later from backend if needed.",
+      "confirming": "Confirming delete..."
+    }
+  }
+  ,
+  "accessCenter": {
+    "eyebrow": "Access center",
+    "title": "Your access",
+    "subtitle": "See where you can work and request more areas.",
+    "noAccessYet": "No access yet",
+    "toast": {
+      "requestSubmitted": "Request submitted",
+      "unableToSubmit": "Unable to submit request",
+      "requestApproved": "Request approved",
+      "approvalFailed": "Approval failed",
+      "requestRejected": "Request rejected",
+      "rejectionFailed": "Rejection failed",
+      "accessGranted": "Access granted",
+      "unableToGrant": "Unable to grant access"
+    },
+    "requestAccess": {
+      "title": "Request access",
+      "selectArea": "Select an area",
+      "submit": "Request access"
+    },
+    "recentRequests": {
+      "title": "Recent requests"
+    },
+    "superAdmin": {
+      "eyebrow": "Super Admin",
+      "title": "Access requests",
+      "subtitle": "Approve or reject pending requests quickly.",
+      "empty": {
+        "title": "No pending requests",
+        "text": "You're all caught up."
+      },
+      "noMessage": "No message",
+      "requestedOn": "Requested {{date}}",
+      "approve": "Approve",
+      "reject": "Reject",
+      "decisionNote": {
+        "label": "Decision note (optional)",
+        "placeholder": "Add context for approval or rejection."
+      }
+    },
+    "manual": {
+      "eyebrow": "Manual access",
+      "title": "Grant access to any user",
+      "subtitle": "Assign multiple areas without waiting for a request.",
+      "user": "User",
+      "selectUser": "Select user",
+      "areasToGrant": "Areas to grant",
+      "grantAccess": "Grant access"
+    }
+  }
+  ,
+  "playground": {
+    "hero": {
+      "eyebrow": "Testing Playground",
+      "title": "Validate sector-specific drafts before rollout.",
+      "subtitle": "Stress-test messaging for ROI and coverage gaps with approved sources."
+    },
+    "metrics": {
+      "confidenceMode": "Confidence mode",
+      "sourcesUsed": "Sources used",
+      "na": "N/A"
+    },
+    "inputs": {
+      "eyebrow": "Inputs",
+      "title": "Objective and filters"
+    },
+    "filters": {
+      "eyebrow": "Filters",
+      "noTagsYet": "No tags yet."
+    },
+    "warnings": {
+      "missingCoreFilters": "Missing sector or use case: output will be low confidence.",
+      "requiresCoreFilters": "This objective requires sector and use case to avoid generic output."
+    },
+    "actions": {
+      "drafting": "Drafting...",
+      "generateDraft": "Generate draft"
+    },
+    "output": {
+      "eyebrow": "Output",
+      "title": "Generated response",
+      "empty": "Generate a draft to view the output.",
+      "noSources": {
+        "title": "No approved sources found",
+        "text": "Approve content for the selected sector/use case or adjust filters to match existing content."
+      },
+      "onlyDraftSources": {
+        "title": "Only draft sources available",
+        "text": "Approve relevant content to raise confidence and improve reuse."
+      },
+      "coverageCheck": "Coverage check"
+    },
+    "sourcesUsed": {
+      "eyebrow": "Sources used",
+      "score": "{{sourceType}} - score {{score}}",
+      "empty": {
+        "title": "No sources found",
+        "text": "Try adding filters or approving more content."
+      }
+    },
+    "feedback": {
+      "eyebrow": "Feedback",
+      "useful": "Useful",
+      "notUseful": "Not useful",
+      "optionalComment": "Optional comment"
+    },
+    "errors": {
+      "failedToLoadTags": "Failed to load tags.",
+      "selectCoreFilters": "Select sector and use case before generating this objective.",
+      "failedToRun": "Failed to run playground.",
+      "failedToSubmitFeedback": "Failed to submit feedback."
+    },
+    "objectives": {
+      "outreachEmail": "Outreach email",
+      "professionalNetworkMessage": "Professional network message",
+      "discoveryCallOpener": "Discovery call opener",
+      "proposalSection": "Proposal section",
+      "faqAnswer": "FAQ answer"
+    }
+  }
+  ,
+  "areasPanel": {
+    "eyebrow": "Areas",
+    "title": "Teams & Knowledge Zones",
+    "subtitle": "Open an area or request access here.",
+    "loadingAreas": "Loading areas...",
+    "key": "Key: {{key}}",
+    "requestNeeded": "Request needed",
+    "requested": "Requested",
+    "requestAccess": "Request access",
+    "superAdminHasAccess": "Super Admin has access to all areas.",
+    "errors": {
+      "failedToLoadAreas": "Failed to load areas",
+      "unableToRequest": "Unable to request"
+    }
+  }
+  ,
+  "usersPanel": {
+    "eyebrow": "Super Admin",
+    "title": "Users & Permissions",
+    "subtitle": "Assign areas, manage roles, and keep access tidy.",
+    "searchPlaceholder": "Search by name or email",
+    "loadingUsers": "Loading users...",
+    "empty": {
+      "title": "No users",
+      "text": "Create a user to get started."
+    },
+    "toast": {
+      "accessUpdated": "Access updated",
+      "userCreated": "User created"
+    },
+    "errors": {
+      "failedToLoadUsers": "Failed to load users",
+      "failedToUpdateAccess": "Failed to update access",
+      "emailAndPasswordRequired": "Email and password are required",
+      "failedToCreateUser": "Failed to create user"
+    },
+    "create": {
+      "title": "Create user",
+      "fullName": "Full name",
+      "email": "Email",
+      "password": "Password",
+      "role": "Role",
+      "initialAreas": "Initial areas",
+      "creating": "Creating...",
+      "submit": "Create user"
+    },
+    "table": {
+      "user": "User",
+      "role": "Role",
+      "areas": "Areas",
+      "actions": "Actions",
+      "noAreas": "No areas",
+      "assignAreas": "Assign areas"
+    },
+    "manage": {
+      "title": "Assign areas",
+      "saveAccess": "Save access"
+    }
+  }
+  ,
+  "caseStudies": {
+    "hero": {
+      "eyebrow": "Case Studies & Proof",
+      "title": "ROI-first outcomes, packaged for reuse.",
+      "subtitle": "Browse approved proof points by sector, use case, and audience to support sales and enablement."
+    },
+    "metrics": {
+      "approvedCaseStudies": "Approved case studies",
+      "activeFilters": "Active filters"
+    },
+    "filters": {
+      "anyStatus": "Any status",
+      "languagePlaceholder": "Language (en, it)"
+    },
+    "status": {
+      "approved": "Approved",
+      "draft": "Draft",
+      "archived": "Archived"
+    },
+    "sort": {
+      "relevant": "Most relevant",
+      "recent": "Most recent",
+      "roi": "Most ROI-heavy"
+    },
+    "card": {
+      "challenge": "Challenge",
+      "solution": "Solution",
+      "outcome": "Outcome"
+    },
+    "fallback": {
+      "challengePending": "Challenge details pending.",
+      "solutionPending": "Solution details pending.",
+      "metricsInReview": "ROI metrics in review"
+    },
+    "empty": {
+      "title": "No case studies yet",
+      "text": "Approve proof content to surface it here."
+    },
+    "errors": {
+      "failedToLoadMetadata": "Failed to load case study metadata.",
+      "failedToLoadItems": "Failed to load case studies."
+    }
+  }
+  ,
+  "verify": {
+    "hero": {
+      "eyebrow": "Verification checklist",
+      "title": "Confirm taxonomy, areas, and retrieval behavior",
+      "subtitle": "Use this page to validate required areas, tag taxonomy, and behavior tests without leaving the UI."
+    },
+    "status": {
+      "loading": "Loading",
+      "ready": "Ready"
+    },
+    "result": {
+      "pass": "Pass",
+      "fail": "Fail"
+    },
+    "missing": "Missing: {{items}}",
+    "backendExpectedAt": "Backend expected at {{url}}",
+    "areasCheck": {
+      "title": "Areas check"
+    },
+    "tagCategoriesCheck": {
+      "title": "Tag categories check"
+    },
+    "behaviorTests": {
+      "title": "Behavior tests"
+    },
+    "filterBehavior": {
+      "title": "Filter behavior",
+      "run": "Run filter test"
+    },
+    "retrievalPriority": {
+      "title": "Retrieval priority",
+      "subtitle": "Uses approved sources and avoids LOW confidence",
+      "run": "Run retrieval test"
+    },
+    "apiCurl": {
+      "title": "API verification (curl)"
+    },
+    "filterTest": {
+      "missingTags": "Missing Retail or Loss prevention tag. Check tag seeds.",
+      "running": "Running filter test...",
+      "pass": "Pass: {{count}} matching items found.",
+      "fail": "Fail: Results missing required tags or none found.",
+      "failed": "Filter test failed."
+    },
+    "retrievalTest": {
+      "missingTags": "Missing Retail or Loss prevention tag. Check tag seeds.",
+      "running": "Running retrieval test...",
+      "pass": "Pass: {{count}} sources used with {{confidence}} confidence.",
+      "fail": "Fail: Missing sources or low confidence warning.",
+      "failed": "Retrieval test failed."
+    },
+    "errors": {
+      "failedToLoadData": "Failed to load verification data."
+    }
+  }
+  ,
+  "settings": {
+    "comingSoonTitle": "Settings coming soon",
+    "comingSoonText": "Manage feature flags and org preferences here later."
+  },
+  "analytics": {
+    "eyebrow": "Analytics",
+    "title": "Usage overview",
+    "ranges": {
+      "last7Days": "Last 7 days",
+      "last30Days": "Last 30 days",
+      "last90Days": "Last 90 days",
+      "lastQuarter": "Last quarter",
+      "thisQuarterToDate": "This quarter to date",
+      "last12Months": "Last 12 months"
+    },
+    "filters": {
+      "allAccuracyLevels": "All accuracy levels",
+      "allTones": "All tones"
+    },
+    "accuracy": {
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "tone": {
+      "technical": "Technical",
+      "executive": "C-Executive",
+      "colloquial": "Colloquial"
+    },
+    "stats": {
+      "totalQuestions": "Total questions",
+      "unanswered": "Unanswered",
+      "topDocument": "Top document",
+      "activeUsers": "Active users"
+    },
+    "tables": {
+      "topDocuments": {
+        "title": "Top documents",
+        "views": "Views"
+      },
+      "topQuestions": {
+        "title": "Top questions",
+        "query": "Query",
+        "tone": "Tone",
+        "accuracy": "Accuracy",
+        "count": "Count"
+      },
+      "unanswered": {
+        "title": "Unanswered",
+        "when": "When"
+      }
+    },
+    "questions": {
+      "eyebrow": "Questions",
+      "title": "Accuracy & tone",
+      "selectArea": "Select an area to see question analytics.",
+      "chooseArea": "Choose an area to view question analytics.",
+      "unavailable": "Question analytics are unavailable for this area.",
+      "questionsInRange": "Questions in range",
+      "topAccuracyLevel": "Top accuracy level",
+      "accuracyBreakdown": "Accuracy breakdown",
+      "toneBreakdown": "Tone breakdown"
+    },
+    "trend": {
+      "title": "Trend by accuracy"
+    },
+    "empty": {
+      "noData": "No data",
+      "noDataForRange": "No data for this range.",
+      "noQuestionsForRange": "No questions for this range yet."
+    },
+    "errors": {
+      "failedToLoadAnalytics": "Failed to load analytics",
+      "failedToLoadQuestions": "Failed to load question analytics"
+    }
+  }
+  ,
+  "copilot": {
+    "eyebrow": "Copilot",
+    "title": "Ask about {{area}}",
+    "subtitle": "Answers stay within this workspace.",
+    "empty": {
+      "chooseWorkspaceTitle": "Choose a workspace",
+      "chooseWorkspaceText": "Select an area to chat with Copilot."
+    },
+    "chat": {
+      "title": "Ask this area anything",
+      "answerSettings": "Answer settings",
+      "accuracy": "Accuracy",
+      "tone": "Tone",
+      "accuracyOptions": {
+        "high": "High - careful with citations",
+        "medium": "Medium - balanced",
+        "low": "Low - fast & concise"
+      },
+      "empty": {
+        "title": "Ask your first question",
+        "examplePrefix": "Example:",
+        "example": "What is our sales pitch for enterprise prospects?"
+      },
+      "roles": {
+        "you": "You",
+        "assistant": "Assistant"
+      },
+      "lowEvidence": "Low evidence",
+      "showSources": "Show sources",
+      "hideSources": "Hide sources",
+      "sourcesTitle": "Sources",
+      "documentFallback": "Document",
+      "chunk": "Chunk {{index}}",
+      "inputPlaceholder": "Ask a question...",
+      "ask": "Ask",
+      "errors": {
+        "requestFailed": "Request failed"
+      }
+    }
+  }
+  ,
+  "tagsAdmin": {
+    "eyebrow": "Tag Admin",
+    "title": "Manage taxonomy",
+    "subtitle": "Create, rename, and deprecate tags without breaking the schema.",
+    "deprecated": "Deprecated",
+    "key": "Key: {{key}}",
+    "form": {
+      "category": "Category",
+      "selectCategory": "Select category",
+      "key": "Key",
+      "label": "Label",
+      "createTag": "Create tag"
+    },
+    "actions": {
+      "rename": "Rename",
+      "restore": "Restore",
+      "deprecate": "Deprecate"
+    },
+    "empty": {
+      "title": "No tags yet",
+      "text": "Create the first tag for this category."
+    },
+    "messages": {
+      "required": "Category, key, and label are required.",
+      "created": "Tag created."
+    },
+    "errors": {
+      "failedToLoadTags": "Failed to load tags.",
+      "failedToCreateTag": "Failed to create tag.",
+      "failedToUpdateTag": "Failed to update tag.",
+      "failedToRenameTag": "Failed to rename tag."
+    }
+  }
+  ,
+  "myAccess": {
+    "eyebrow": "Access",
+    "title": "My Access Center",
+    "subtitle": "Review permissions, request new areas, and track decisions.",
+    "refresh": "Refresh",
+    "requestAccess": "Request access",
+    "toast": {
+      "requestSent": "Access request sent",
+      "requestCancelled": "Request cancelled"
+    },
+    "errors": {
+      "failedToLoadRequests": "Failed to load requests",
+      "failedToCancel": "Failed to cancel"
+    },
+    "allowedAreas": {
+      "title": "Allowed areas",
+      "none": "No access yet."
+    },
+    "history": {
+      "title": "Request history",
+      "loading": "Loading requests...",
+      "empty": {
+        "title": "No requests yet",
+        "text": "Use “Request access” to ask for new areas."
+      },
+      "note": "Note",
+      "noMessage": "No message",
+      "requestedOn": "Requested {{date}}",
+      "goToArea": "Go to area"
+    },
+    "status": {
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "cancelled": "Cancelled"
+    },
+    "requestModal": {
+      "title": "Request area access",
+      "subtitle": "Select one or more areas. A short note helps admins approve quickly.",
+      "empty": {
+        "title": "No unassigned areas",
+        "text": "You already have all available areas."
+      },
+      "messageLabel": "Message (optional)",
+      "messagePlaceholder": "Add context for the admin",
+      "submit": "Submit request",
+      "errors": {
+        "noAreasAvailable": "No areas available to request",
+        "selectAtLeastOne": "Select at least one area",
+        "failedToSubmit": "Failed to submit request"
+      }
+    },
+    "cancelModal": {
+      "title": "Cancel request?",
+      "message": "This will withdraw your pending request.",
+      "confirm": "Cancel request"
+    }
+  }
+  ,
+  "askAi": {
+    "newChat": "New chat",
+    "time": {
+      "justNow": "just now",
+      "minutesAgo": "{{count}}m ago",
+      "hoursAgo": "{{count}}h ago",
+      "daysAgo": "{{count}}d ago"
+    },
+    "samplePrompts": {
+      "prompt1": "What changed in our Q3 launch plan?",
+      "prompt2": "Summarize the onboarding checklist for managers.",
+      "prompt3": "Draft a response for a sales objection about pricing."
+    },
+    "scope": {
+      "eyebrow": "Area scope",
+      "subtitle": "Switch areas without losing your chat history.",
+      "allAreas": "All areas"
+    },
+    "empty": {
+      "startTitle": "Start a new chat",
+      "startText": "Answers stay scoped to the areas you choose."
+    },
+    "history": {
+      "title": "Your conversations",
+      "creating": "Creating...",
+      "searchLabel": "Search",
+      "searchPlaceholder": "Search by title",
+      "empty": {
+        "title": "No chats",
+        "text": "Create a chat to start asking questions."
+      }
+    },
+    "settings": {
+      "eyebrow": "Answer settings",
+      "title": "Tone & accuracy",
+      "button": "Answer settings",
+      "toneHelp": "Tone guides how the assistant speaks.",
+      "tones": {
+        "executiveDesc": "Concise, senior-ready updates.",
+        "technicalDesc": "Precise, detailed, engineering tone.",
+        "colloquialDesc": "Friendly and plain language."
+      },
+      "accuracyTarget": "Accuracy target",
+      "accuracyHelp": "Higher accuracy is slower but more careful.",
+      "accuracyMode": {
+        "high": "High accuracy: strict sourcing, longer responses.",
+        "fast": "Fast mode: brief answers, lighter sourcing.",
+        "balanced": "Balanced: mixes speed and fidelity."
+      },
+      "appliesToNewMessages": "Settings apply to new messages in this chat."
+    },
+    "conversationTitlePlaceholder": "Conversation title",
+    "scopedToSelection": "Answers are scoped to this selection",
+    "composer": {
+      "placeholder": "Ask anything about this area. Enter to send, Shift+Enter for newline.",
+      "scopedHint": "Scoped to your selected areas.",
+      "sending": "Sending...",
+      "send": "Send"
+    },
+    "meta": {
+      "confidence": "Confidence: {{confidence}}%",
+      "accuracy": "Accuracy {{accuracy}}%"
+    },
+    "actions": {
+      "exportMd": "Export MD",
+      "sourcesUsed": "Sources used"
+    },
+    "sources": {
+      "document": "Document {{id}}",
+      "area": "Area {{id}}"
+    },
+    "errors": {
+      "unableToLoadConversation": "Unable to load conversation",
+      "unableToLoadConversations": "Unable to load conversations",
+      "unableToCreateChat": "Unable to create chat",
+      "requestFailed": "Request failed",
+      "unableToDeleteConversation": "Unable to delete conversation",
+      "unableToRenameConversation": "Unable to rename conversation"
+    }
+  }
+  ,
+  "accessRequests": {
+    "title": "Access Requests",
+    "subtitle": "Approve or reject area access with clear audit trail.",
+    "filters": {
+      "all": "All"
+    },
+    "empty": {
+      "title": "No requests"
+    },
+    "decidedOn": "Decided {{date}}",
+    "errors": {
+      "failedToLoad": "Failed to load requests",
+      "failedToApprove": "Failed to approve",
+      "failedToReject": "Failed to reject"
+    }
+  }
+  ,
+  "askAiDrawer": {
+    "title": "Answers stay in your workspace",
+    "subtitle": "Set tone & accuracy before sending.",
+    "chooseArea": "Choose an area",
+    "empty": {
+      "title": "Pick an area to start",
+      "text": "We keep AI answers inside your workspace areas."
+    },
+    "errors": {
+      "selectAreaFirst": "Select an area first."
+    }
+  }
+  ,
+  "knowledgeBase": {
+    "hero": {
+      "title": "Approved messaging, structured for reuse.",
+      "subtitle": "Organize sector-specific content, outreach blocks, and proof points with consistent taxonomy."
+    },
+    "loadingMeta": "Loading areas and tags...",
+    "actions": {
+      "newItem": "New content item",
+      "showApproved": "Show approved ({{count}})",
+      "retry": "Retry",
+      "archive": "Archive"
+    },
+    "stats": {
+      "approvedItems": "Approved items",
+      "totalItems": "Total items",
+      "activeFilters": "Active filters",
+      "languages": "Languages",
+      "all": "All"
+    },
+    "filters": {
+      "areas": "Areas",
+      "allAreas": "All areas",
+      "searchPlaceholder": "Search title or summary",
+      "allCollections": "All collections",
+      "anyStatus": "Any status",
+      "languagePlaceholder": "Language (en, it)",
+      "noTagsYet": "No tags yet."
+    },
+    "library": {
+      "eyebrow": "Content library",
+      "title": "Approved content surfaces first",
+      "itemsCount": "{{count}} items",
+      "updatedOn": "{{language}} - Updated {{date}}",
+      "empty": {
+        "title": "No content items yet",
+        "text": "Create an item or adjust filters."
+      }
+    },
+    "detail": {
+      "edit": "Edit",
+      "create": "Create",
+      "title": "Content details",
+      "subtitle": "Promote approved items for reuse."
+    },
+    "messages": {
+      "created": "Content created.",
+      "updated": "Content updated.",
+      "archived": "Content archived."
+    },
+    "errors": {
+      "failedToLoadMeta": "Failed to load knowledge base metadata.",
+      "failedToLoadItems": "Failed to load content items.",
+      "areaAndTitleRequired": "Area and title are required.",
+      "failedToSave": "Failed to save content.",
+      "failedToArchive": "Failed to archive content."
+    },
+    "tagRequest": {
+      "eyebrow": "Request new tag",
+      "required": "Choose a category and label to request a tag.",
+      "submitted": "Tag request submitted.",
+      "failed": "Failed to submit tag request.",
+      "labelPlaceholder": "New tag label",
+      "noteOptional": "Note (optional)",
+      "notePlaceholder": "Why is this needed?",
+      "submit": "Request tag"
+    },
+    "form": {
+      "collection": "Collection",
+      "noCollection": "No collection",
+      "summary": "Summary",
+      "body": "Body",
+      "metricsOptional": "ROI / Metrics (optional)",
+      "owner": "Owner / Author",
+      "optional": "Optional"
+    },
+    "tags": {
+      "taxonomy": "Tags (taxonomy)",
+      "noFunnelStage": "No funnel stage",
+      "additionalOptional": "Additional tags (optional)",
+      "help": "Use taxonomy tags to power consistent, targeted outputs."
+    }
+  }
+}

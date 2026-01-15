@@ -1,0 +1,74 @@
+{
+  "app": {
+    "brand": "Brand"
+  },
+  "actions": {
+    "open": "Apri",
+    "close": "Chiudi",
+    "save": "Salva",
+    "saveChanges": "Salva modifiche",
+    "cancel": "Annulla",
+    "confirm": "Conferma",
+    "edit": "Modifica",
+    "back": "Indietro",
+    "copy": "Copia",
+    "clear": "Svuota",
+    "delete": "Elimina",
+    "reload": "Ricarica",
+    "backToList": "Torna alla lista",
+    "download": "Scarica",
+    "downloading": "Download in corso...",
+    "upload": "Carica",
+    "uploading": "Caricamento in corso...",
+    "saving": "Salvataggio in corso...",
+    "submit": "Invia",
+    "submitting": "Invio in corso...",
+    "signOut": "Esci"
+  },
+  "labels": {
+    "area": "Area",
+    "file": "File",
+    "created": "Creato",
+    "updated": "Aggiornato",
+    "title": "Titolo",
+    "tagsCommaSeparated": "Tag (separati da virgola)",
+    "version": "Versione",
+    "date": "Data",
+    "size": "Dimensione",
+    "message": "Messaggio",
+    "status": "Stato",
+    "reason": "Motivo",
+    "language": "Lingua",
+    "context": "Contesto",
+    "objective": "Obiettivo"
+  },
+  "placeholders": {
+    "searchContent": "Cerca contenuti",
+    "selectArea": "Seleziona area",
+    "documentTitle": "Titolo documento",
+    "tagsExample": "finanza, q3, onboarding",
+    "tellAdminWhy": "Spiega all'amministratore perché ti serve l'accesso.",
+    "addBackground": "Aggiungi contesto, obiettivi o vincoli"
+  },
+  "loading": {
+    "workspace": "Caricamento workspace...",
+    "loading": "Caricamento..."
+  },
+  "empty": {
+    "noTags": "Nessun tag"
+  },
+  "status": {
+    "pending": "In attesa",
+    "approved": "Approvato",
+    "rejected": "Rifiutato"
+  },
+  "user": {
+    "fallbackName": "Utente"
+  },
+  "validation": {
+    "required": {
+      "title": "Il titolo è obbligatorio",
+      "file": "Il file è obbligatorio"
+    }
+  }
+}

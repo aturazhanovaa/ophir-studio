@@ -1,0 +1,74 @@
+{
+  "app": {
+    "brand": "Brand"
+  },
+  "actions": {
+    "open": "Open",
+    "close": "Close",
+    "save": "Save",
+    "saveChanges": "Save changes",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "edit": "Edit",
+    "back": "Back",
+    "copy": "Copy",
+    "clear": "Clear",
+    "delete": "Delete",
+    "reload": "Reload",
+    "backToList": "Back to list",
+    "download": "Download",
+    "downloading": "Downloading...",
+    "upload": "Upload",
+    "uploading": "Uploading...",
+    "saving": "Saving...",
+    "submit": "Submit",
+    "submitting": "Submitting...",
+    "signOut": "Sign out"
+  },
+  "labels": {
+    "area": "Area",
+    "file": "File",
+    "created": "Created",
+    "updated": "Updated",
+    "title": "Title",
+    "tagsCommaSeparated": "Tags (comma separated)",
+    "version": "Version",
+    "date": "Date",
+    "size": "Size",
+    "message": "Message",
+    "status": "Status",
+    "reason": "Reason",
+    "language": "Language",
+    "context": "Context",
+    "objective": "Objective"
+  },
+  "placeholders": {
+    "searchContent": "Search content",
+    "selectArea": "Select area",
+    "documentTitle": "Document title",
+    "tagsExample": "finance, q3, onboarding",
+    "tellAdminWhy": "Tell the admin why you need access.",
+    "addBackground": "Add background, goals, or constraints"
+  },
+  "loading": {
+    "workspace": "Loading workspace...",
+    "loading": "Loading..."
+  },
+  "empty": {
+    "noTags": "No tags"
+  },
+  "status": {
+    "pending": "Pending",
+    "approved": "Approved",
+    "rejected": "Rejected"
+  },
+  "user": {
+    "fallbackName": "User"
+  },
+  "validation": {
+    "required": {
+      "title": "Title is required",
+      "file": "File is required"
+    }
+  }
+}

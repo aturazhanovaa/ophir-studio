@@ -1,0 +1,856 @@
+{
+  "breadcrumb": "Workspace",
+  "primaryAction": "Centro accessi",
+  "pageTitles": {
+    "dashboard": "Dashboard",
+    "accessCenter": "Centro accessi",
+    "documentDetails": "Dettagli documento",
+    "documents": "Documenti",
+    "caseStudies": "Casi studio e prove",
+    "analytics": "Analisi",
+    "knowledgeBase": "Base di conoscenza",
+    "adminUsers": "Admin - Utenti",
+    "adminTags": "Admin - Tag",
+    "verification": "Verifica",
+    "adminAccessRequests": "Admin - Richieste accesso",
+    "adminSettings": "Admin - Impostazioni",
+    "askAi": "Chiedi all'AI",
+    "playground": "Playground",
+    "workspace": "Workspace"
+  },
+  "overview": {
+    "areasAvailable": "Aree disponibili",
+    "areasYouCanAccess": "Aree a cui puoi accedere",
+    "noAreasCreated": "Nessuna area creata.",
+    "requestAccessToBegin": "Richiedi l'accesso per iniziare.",
+    "quickActions": "Azioni rapide",
+    "jumpToWorkflows": "Vai ai flussi principali",
+    "documentsTitle": "Documenti",
+    "documentsDesc": "Cerca, filtra e gestisci i file.",
+    "askAiTitle": "Chiedi all'AI",
+    "askAiDesc": "Bozze di risposte con fonti approvate.",
+    "accessCenterTitle": "Centro accessi",
+    "accessCenterDesc": "Rivedi l'accesso e richiedi nuove aree."
+  }
+  ,
+  "documents": {
+    "empty": {
+      "pickAreaTitle": "Scegli un'area per vedere i documenti",
+      "pickAreaText": "Seleziona un workspace dalla barra in alto per caricare i file."
+    },
+    "toolbar": {
+      "eyebrow": "Documenti",
+      "subtitle": "Cerca, ordina e gestisci i file senza lasciare questa pagina.",
+      "closeUpload": "Chiudi caricamento"
+    },
+    "upload": {
+      "eyebrow": "Caricamento",
+      "title": "Aggiungi un nuovo documento"
+    },
+    "messages": {
+      "uploaded": "Documento caricato."
+    },
+    "errors": {
+      "selectAreaFirst": "Seleziona prima un'area.",
+      "titleAndFileRequired": "Titolo e file sono obbligatori.",
+      "failedToLoad": "Impossibile caricare i documenti",
+      "uploadFailed": "Caricamento non riuscito"
+    },
+    "actions": {
+      "rename": "Rinomina",
+      "newVersion": "Nuova versione"
+    },
+    "list": {
+      "allFilesForArea": "Tutti i file per quest'area",
+      "searchByTitle": "Cerca per titolo",
+      "filterByTag": "Filtra per tag (separati da virgola)",
+      "deleted": "Eliminato",
+      "sort": {
+        "latest": "Più recenti",
+        "oldest": "Più vecchi",
+        "mostUsed": "Più usati"
+      },
+      "columns": {
+        "tags": "Tag",
+        "versions": "Versioni",
+        "actions": "Azioni"
+      },
+      "empty": {
+        "title": "Nessun documento",
+        "text": "Carica un documento per iniziare a cercare e chattare."
+      }
+    }
+    ,
+    "uploadModal": {
+      "title": "Carica documento",
+      "subtitle": "Lo suddivideremo e lo indicizzeremo per RAG.",
+      "titlePlaceholder": "Pitch vendite Q1",
+      "tags": "Tag",
+      "tagsPlaceholder": "prodotto, sales, interno"
+    },
+    "editModal": {
+      "title": "Modifica documento",
+      "tags": "Tag"
+    },
+    "drawer": {
+      "title": "Dettagli documento",
+      "notFoundText": "Prova a riaprire dalla lista.",
+      "fileName": "Nome file",
+      "refreshList": "Aggiorna lista",
+      "fromRowMenu": "Dal menu riga",
+      "metadata": {
+        "title": "Metadati",
+        "subtitle": "Rinomina e aggiorna i tag del documento."
+      },
+      "versioning": {
+        "subtitle": "Mantieni lo storico intatto per ogni modifica."
+      },
+      "versions": {
+        "subtitle": "Storico completo con download."
+      }
+    }
+    ,
+    "detailPanel": {
+      "eyebrow": "Dettagli",
+      "empty": {
+        "title": "Seleziona un documento",
+        "text": "Scegli un documento per vedere metadati e versioni."
+      }
+    }
+    ,
+    "contextPanel": {
+      "empty": {
+        "text": "Scegli un documento per vedere i dettagli."
+      }
+    }
+  },
+  "documentDetails": {
+    "eyebrow": "Documento",
+    "fileFallback": "file",
+    "empty": {
+      "noneTitle": "Nessun documento selezionato",
+      "noneText": "Apri un documento dalla lista per vedere i dettagli.",
+      "notFoundTitle": "Documento non trovato",
+      "notFoundText": "Controlla il link oppure torna alla lista."
+    },
+    "messages": {
+      "saved": "Dettagli salvati.",
+      "versionUploaded": "Nuova versione caricata.",
+      "confirmDelete": "Clicca di nuovo su elimina per confermare."
+    },
+    "errors": {
+      "unableToLoad": "Impossibile caricare il documento",
+      "failedToSave": "Impossibile salvare le modifiche",
+      "chooseFile": "Scegli un file da caricare.",
+      "deleteFailed": "Eliminazione non riuscita",
+      "downloadFailed": "Download non riuscito"
+    },
+    "actions": {
+      "saving": "Salvataggio in corso...",
+      "deleting": "Eliminazione in corso..."
+    },
+    "versioning": {
+      "eyebrow": "Versioni",
+      "title": "Carica una nuova versione",
+      "uploadVersion": "Carica versione"
+    },
+    "versions": {
+      "eyebrow": "Versioni",
+      "title": "Storico",
+      "uploaded": "Caricato",
+      "none": "Nessuna versione."
+    },
+    "danger": {
+      "eyebrow": "Pericolo",
+      "title": "Elimina documento",
+      "subtitle": "Questo eliminerà (soft-delete) il documento. Potrai ripristinarlo dal backend se necessario.",
+      "confirming": "Conferma eliminazione..."
+    }
+  }
+  ,
+  "accessCenter": {
+    "eyebrow": "Centro accessi",
+    "title": "Il tuo accesso",
+    "subtitle": "Vedi dove puoi lavorare e richiedi altre aree.",
+    "noAccessYet": "Nessun accesso",
+    "toast": {
+      "requestSubmitted": "Richiesta inviata",
+      "unableToSubmit": "Impossibile inviare la richiesta",
+      "requestApproved": "Richiesta approvata",
+      "approvalFailed": "Approvazione non riuscita",
+      "requestRejected": "Richiesta rifiutata",
+      "rejectionFailed": "Rifiuto non riuscito",
+      "accessGranted": "Accesso concesso",
+      "unableToGrant": "Impossibile concedere l'accesso"
+    },
+    "requestAccess": {
+      "title": "Richiedi accesso",
+      "selectArea": "Seleziona un'area",
+      "submit": "Richiedi accesso"
+    },
+    "recentRequests": {
+      "title": "Richieste recenti"
+    },
+    "superAdmin": {
+      "eyebrow": "Super Admin",
+      "title": "Richieste di accesso",
+      "subtitle": "Approva o rifiuta rapidamente le richieste in attesa.",
+      "empty": {
+        "title": "Nessuna richiesta in attesa",
+        "text": "Sei aggiornato."
+      },
+      "noMessage": "Nessun messaggio",
+      "requestedOn": "Richiesto {{date}}",
+      "approve": "Approva",
+      "reject": "Rifiuta",
+      "decisionNote": {
+        "label": "Nota decisione (opzionale)",
+        "placeholder": "Aggiungi contesto per approvazione o rifiuto."
+      }
+    },
+    "manual": {
+      "eyebrow": "Accesso manuale",
+      "title": "Concedi accesso a qualsiasi utente",
+      "subtitle": "Assegna più aree senza attendere una richiesta.",
+      "user": "Utente",
+      "selectUser": "Seleziona utente",
+      "areasToGrant": "Aree da concedere",
+      "grantAccess": "Concedi accesso"
+    }
+  }
+  ,
+  "playground": {
+    "hero": {
+      "eyebrow": "Playground di test",
+      "title": "Valida bozze specifiche per settore prima del rollout.",
+      "subtitle": "Metti alla prova i messaggi per ROI e copertura con fonti approvate."
+    },
+    "metrics": {
+      "confidenceMode": "Modalità di confidenza",
+      "sourcesUsed": "Fonti usate",
+      "na": "N/D"
+    },
+    "inputs": {
+      "eyebrow": "Input",
+      "title": "Obiettivo e filtri"
+    },
+    "filters": {
+      "eyebrow": "Filtri",
+      "noTagsYet": "Nessun tag."
+    },
+    "warnings": {
+      "missingCoreFilters": "Manca settore o use case: l'output avrà bassa confidenza.",
+      "requiresCoreFilters": "Questo obiettivo richiede settore e use case per evitare output generico."
+    },
+    "actions": {
+      "drafting": "Generazione in corso...",
+      "generateDraft": "Genera bozza"
+    },
+    "output": {
+      "eyebrow": "Output",
+      "title": "Risposta generata",
+      "empty": "Genera una bozza per vedere l'output.",
+      "noSources": {
+        "title": "Nessuna fonte approvata trovata",
+        "text": "Approva contenuti per il settore/use case selezionati o modifica i filtri per farli corrispondere."
+      },
+      "onlyDraftSources": {
+        "title": "Solo fonti in bozza disponibili",
+        "text": "Approva contenuti rilevanti per aumentare la confidenza e migliorare il riuso."
+      },
+      "coverageCheck": "Verifica copertura"
+    },
+    "sourcesUsed": {
+      "eyebrow": "Fonti usate",
+      "score": "{{sourceType}} - punteggio {{score}}",
+      "empty": {
+        "title": "Nessuna fonte trovata",
+        "text": "Prova ad aggiungere filtri o approvare più contenuti."
+      }
+    },
+    "feedback": {
+      "eyebrow": "Feedback",
+      "useful": "Utile",
+      "notUseful": "Non utile",
+      "optionalComment": "Commento opzionale"
+    },
+    "errors": {
+      "failedToLoadTags": "Impossibile caricare i tag.",
+      "selectCoreFilters": "Seleziona settore e use case prima di generare questo obiettivo.",
+      "failedToRun": "Impossibile eseguire il playground.",
+      "failedToSubmitFeedback": "Impossibile inviare il feedback."
+    },
+    "objectives": {
+      "outreachEmail": "Email di outreach",
+      "professionalNetworkMessage": "Messaggio per network professionale",
+      "discoveryCallOpener": "Apertura call di discovery",
+      "proposalSection": "Sezione proposta",
+      "faqAnswer": "Risposta FAQ"
+    }
+  }
+  ,
+  "areasPanel": {
+    "eyebrow": "Aree",
+    "title": "Team e zone di conoscenza",
+    "subtitle": "Apri un'area o richiedi l'accesso qui.",
+    "loadingAreas": "Caricamento aree...",
+    "key": "Chiave: {{key}}",
+    "requestNeeded": "Richiesta necessaria",
+    "requested": "Richiesto",
+    "requestAccess": "Richiedi accesso",
+    "superAdminHasAccess": "Il Super Admin ha accesso a tutte le aree.",
+    "errors": {
+      "failedToLoadAreas": "Impossibile caricare le aree",
+      "unableToRequest": "Impossibile richiedere"
+    }
+  }
+  ,
+  "usersPanel": {
+    "eyebrow": "Super Admin",
+    "title": "Utenti e permessi",
+    "subtitle": "Assegna aree, gestisci ruoli e mantieni l'accesso ordinato.",
+    "searchPlaceholder": "Cerca per nome o email",
+    "loadingUsers": "Caricamento utenti...",
+    "empty": {
+      "title": "Nessun utente",
+      "text": "Crea un utente per iniziare."
+    },
+    "toast": {
+      "accessUpdated": "Accesso aggiornato",
+      "userCreated": "Utente creato"
+    },
+    "errors": {
+      "failedToLoadUsers": "Impossibile caricare gli utenti",
+      "failedToUpdateAccess": "Impossibile aggiornare l'accesso",
+      "emailAndPasswordRequired": "Email e password sono obbligatorie",
+      "failedToCreateUser": "Impossibile creare l'utente"
+    },
+    "create": {
+      "title": "Crea utente",
+      "fullName": "Nome completo",
+      "email": "Email",
+      "password": "Password",
+      "role": "Ruolo",
+      "initialAreas": "Aree iniziali",
+      "creating": "Creazione in corso...",
+      "submit": "Crea utente"
+    },
+    "table": {
+      "user": "Utente",
+      "role": "Ruolo",
+      "areas": "Aree",
+      "actions": "Azioni",
+      "noAreas": "Nessuna area",
+      "assignAreas": "Assegna aree"
+    },
+    "manage": {
+      "title": "Assegna aree",
+      "saveAccess": "Salva accesso"
+    }
+  }
+  ,
+  "caseStudies": {
+    "hero": {
+      "eyebrow": "Casi studio e prove",
+      "title": "Risultati ROI-first, pronti per il riuso.",
+      "subtitle": "Sfoglia proof point approvati per settore, use case e audience per supportare vendite ed enablement."
+    },
+    "metrics": {
+      "approvedCaseStudies": "Casi studio approvati",
+      "activeFilters": "Filtri attivi"
+    },
+    "filters": {
+      "anyStatus": "Qualsiasi stato",
+      "languagePlaceholder": "Lingua (en, it)"
+    },
+    "status": {
+      "approved": "Approvato",
+      "draft": "Bozza",
+      "archived": "Archiviato"
+    },
+    "sort": {
+      "relevant": "Più rilevanti",
+      "recent": "Più recenti",
+      "roi": "Più orientati al ROI"
+    },
+    "card": {
+      "challenge": "Sfida",
+      "solution": "Soluzione",
+      "outcome": "Risultato"
+    },
+    "fallback": {
+      "challengePending": "Dettagli sfida in arrivo.",
+      "solutionPending": "Dettagli soluzione in arrivo.",
+      "metricsInReview": "Metriche ROI in revisione"
+    },
+    "empty": {
+      "title": "Nessun caso studio",
+      "text": "Approva contenuti di prova per mostrarli qui."
+    },
+    "errors": {
+      "failedToLoadMetadata": "Impossibile caricare i metadati dei casi studio.",
+      "failedToLoadItems": "Impossibile caricare i casi studio."
+    }
+  }
+  ,
+  "verify": {
+    "hero": {
+      "eyebrow": "Checklist di verifica",
+      "title": "Conferma tassonomia, aree e comportamento di retrieval",
+      "subtitle": "Usa questa pagina per validare aree richieste, tassonomia tag e test di comportamento senza uscire dall'interfaccia."
+    },
+    "status": {
+      "loading": "Caricamento",
+      "ready": "Pronto"
+    },
+    "result": {
+      "pass": "OK",
+      "fail": "KO"
+    },
+    "missing": "Mancanti: {{items}}",
+    "backendExpectedAt": "Backend previsto su {{url}}",
+    "areasCheck": {
+      "title": "Verifica aree"
+    },
+    "tagCategoriesCheck": {
+      "title": "Verifica categorie tag"
+    },
+    "behaviorTests": {
+      "title": "Test di comportamento"
+    },
+    "filterBehavior": {
+      "title": "Comportamento filtri",
+      "run": "Esegui test filtro"
+    },
+    "retrievalPriority": {
+      "title": "Priorità retrieval",
+      "subtitle": "Usa fonti approvate ed evita confidenza BASSA",
+      "run": "Esegui test retrieval"
+    },
+    "apiCurl": {
+      "title": "Verifica API (curl)"
+    },
+    "filterTest": {
+      "missingTags": "Manca il tag Retail o Loss prevention. Controlla i seed dei tag.",
+      "running": "Test filtro in corso...",
+      "pass": "OK: trovati {{count}} elementi corrispondenti.",
+      "fail": "KO: risultati senza tag richiesti oppure nessun risultato.",
+      "failed": "Test filtro non riuscito."
+    },
+    "retrievalTest": {
+      "missingTags": "Manca il tag Retail o Loss prevention. Controlla i seed dei tag.",
+      "running": "Test retrieval in corso...",
+      "pass": "OK: usate {{count}} fonti con confidenza {{confidence}}.",
+      "fail": "KO: fonti mancanti o warning di bassa confidenza.",
+      "failed": "Test retrieval non riuscito."
+    },
+    "errors": {
+      "failedToLoadData": "Impossibile caricare i dati di verifica."
+    }
+  }
+  ,
+  "settings": {
+    "comingSoonTitle": "Impostazioni in arrivo",
+    "comingSoonText": "Gestisci qui in futuro feature flag e preferenze dell'organizzazione."
+  },
+  "analytics": {
+    "eyebrow": "Analisi",
+    "title": "Panoramica utilizzo",
+    "ranges": {
+      "last7Days": "Ultimi 7 giorni",
+      "last30Days": "Ultimi 30 giorni",
+      "last90Days": "Ultimi 90 giorni",
+      "lastQuarter": "Ultimo trimestre",
+      "thisQuarterToDate": "Trimestre in corso (ad oggi)",
+      "last12Months": "Ultimi 12 mesi"
+    },
+    "filters": {
+      "allAccuracyLevels": "Tutti i livelli di accuratezza",
+      "allTones": "Tutti i toni"
+    },
+    "accuracy": {
+      "high": "Alta",
+      "medium": "Media",
+      "low": "Bassa"
+    },
+    "tone": {
+      "technical": "Tecnico",
+      "executive": "Executive",
+      "colloquial": "Colloquiale"
+    },
+    "stats": {
+      "totalQuestions": "Domande totali",
+      "unanswered": "Senza risposta",
+      "topDocument": "Documento principale",
+      "activeUsers": "Utenti attivi"
+    },
+    "tables": {
+      "topDocuments": {
+        "title": "Documenti principali",
+        "views": "Visualizzazioni"
+      },
+      "topQuestions": {
+        "title": "Domande principali",
+        "query": "Query",
+        "tone": "Tono",
+        "accuracy": "Accuratezza",
+        "count": "Conteggio"
+      },
+      "unanswered": {
+        "title": "Senza risposta",
+        "when": "Quando"
+      }
+    },
+    "questions": {
+      "eyebrow": "Domande",
+      "title": "Accuratezza e tono",
+      "selectArea": "Seleziona un'area per vedere le analisi delle domande.",
+      "chooseArea": "Scegli un'area per visualizzare le analisi delle domande.",
+      "unavailable": "Le analisi delle domande non sono disponibili per quest'area.",
+      "questionsInRange": "Domande nell'intervallo",
+      "topAccuracyLevel": "Livello di accuratezza principale",
+      "accuracyBreakdown": "Distribuzione accuratezza",
+      "toneBreakdown": "Distribuzione tono"
+    },
+    "trend": {
+      "title": "Trend per accuratezza"
+    },
+    "empty": {
+      "noData": "Nessun dato",
+      "noDataForRange": "Nessun dato per questo intervallo.",
+      "noQuestionsForRange": "Ancora nessuna domanda per questo intervallo."
+    },
+    "errors": {
+      "failedToLoadAnalytics": "Impossibile caricare le analisi",
+      "failedToLoadQuestions": "Impossibile caricare le analisi delle domande"
+    }
+  }
+  ,
+  "copilot": {
+    "eyebrow": "Copilot",
+    "title": "Chiedi su {{area}}",
+    "subtitle": "Le risposte restano in questo workspace.",
+    "empty": {
+      "chooseWorkspaceTitle": "Scegli un workspace",
+      "chooseWorkspaceText": "Seleziona un'area per chattare con Copilot."
+    },
+    "chat": {
+      "title": "Chiedi qualsiasi cosa su quest'area",
+      "answerSettings": "Impostazioni risposta",
+      "accuracy": "Accuratezza",
+      "tone": "Tono",
+      "accuracyOptions": {
+        "high": "Alta - attenta alle citazioni",
+        "medium": "Media - bilanciata",
+        "low": "Bassa - veloce e concisa"
+      },
+      "empty": {
+        "title": "Fai la tua prima domanda",
+        "examplePrefix": "Esempio:",
+        "example": "Qual è il nostro pitch di vendita per prospect enterprise?"
+      },
+      "roles": {
+        "you": "Tu",
+        "assistant": "Assistente"
+      },
+      "lowEvidence": "Evidenza bassa",
+      "showSources": "Mostra fonti",
+      "hideSources": "Nascondi fonti",
+      "sourcesTitle": "Fonti",
+      "documentFallback": "Documento",
+      "chunk": "Chunk {{index}}",
+      "inputPlaceholder": "Fai una domanda...",
+      "ask": "Chiedi",
+      "errors": {
+        "requestFailed": "Richiesta non riuscita"
+      }
+    }
+  }
+  ,
+  "tagsAdmin": {
+    "eyebrow": "Gestione tag",
+    "title": "Gestisci tassonomia",
+    "subtitle": "Crea, rinomina e depreca i tag senza rompere lo schema.",
+    "deprecated": "Deprecato",
+    "key": "Chiave: {{key}}",
+    "form": {
+      "category": "Categoria",
+      "selectCategory": "Seleziona categoria",
+      "key": "Chiave",
+      "label": "Etichetta",
+      "createTag": "Crea tag"
+    },
+    "actions": {
+      "rename": "Rinomina",
+      "restore": "Ripristina",
+      "deprecate": "Depreca"
+    },
+    "empty": {
+      "title": "Nessun tag",
+      "text": "Crea il primo tag per questa categoria."
+    },
+    "messages": {
+      "required": "Categoria, chiave ed etichetta sono obbligatorie.",
+      "created": "Tag creato."
+    },
+    "errors": {
+      "failedToLoadTags": "Impossibile caricare i tag.",
+      "failedToCreateTag": "Impossibile creare il tag.",
+      "failedToUpdateTag": "Impossibile aggiornare il tag.",
+      "failedToRenameTag": "Impossibile rinominare il tag."
+    }
+  }
+  ,
+  "myAccess": {
+    "eyebrow": "Accesso",
+    "title": "Centro accessi personale",
+    "subtitle": "Rivedi permessi, richiedi nuove aree e traccia le decisioni.",
+    "refresh": "Aggiorna",
+    "requestAccess": "Richiedi accesso",
+    "toast": {
+      "requestSent": "Richiesta di accesso inviata",
+      "requestCancelled": "Richiesta annullata"
+    },
+    "errors": {
+      "failedToLoadRequests": "Impossibile caricare le richieste",
+      "failedToCancel": "Impossibile annullare"
+    },
+    "allowedAreas": {
+      "title": "Aree consentite",
+      "none": "Nessun accesso."
+    },
+    "history": {
+      "title": "Storico richieste",
+      "loading": "Caricamento richieste...",
+      "empty": {
+        "title": "Nessuna richiesta",
+        "text": "Usa “Richiedi accesso” per chiedere nuove aree."
+      },
+      "note": "Nota",
+      "noMessage": "Nessun messaggio",
+      "requestedOn": "Richiesto {{date}}",
+      "goToArea": "Vai all'area"
+    },
+    "status": {
+      "pending": "In attesa",
+      "approved": "Approvato",
+      "rejected": "Rifiutato",
+      "cancelled": "Annullato"
+    },
+    "requestModal": {
+      "title": "Richiedi accesso alle aree",
+      "subtitle": "Seleziona una o più aree. Una breve nota aiuta gli admin ad approvare più velocemente.",
+      "empty": {
+        "title": "Nessuna area non assegnata",
+        "text": "Hai già tutte le aree disponibili."
+      },
+      "messageLabel": "Messaggio (opzionale)",
+      "messagePlaceholder": "Aggiungi contesto per l'admin",
+      "submit": "Invia richiesta",
+      "errors": {
+        "noAreasAvailable": "Nessuna area disponibile da richiedere",
+        "selectAtLeastOne": "Seleziona almeno un'area",
+        "failedToSubmit": "Impossibile inviare la richiesta"
+      }
+    },
+    "cancelModal": {
+      "title": "Annullare la richiesta?",
+      "message": "Questo ritirerà la richiesta in attesa.",
+      "confirm": "Annulla richiesta"
+    }
+  }
+  ,
+  "askAi": {
+    "newChat": "Nuova chat",
+    "time": {
+      "justNow": "proprio ora",
+      "minutesAgo": "{{count}}m fa",
+      "hoursAgo": "{{count}}h fa",
+      "daysAgo": "{{count}}g fa"
+    },
+    "samplePrompts": {
+      "prompt1": "Cosa è cambiato nel nostro piano di lancio Q3?",
+      "prompt2": "Riassumi la checklist di onboarding per i manager.",
+      "prompt3": "Scrivi una risposta a un'obiezione di vendita sul prezzo."
+    },
+    "scope": {
+      "eyebrow": "Ambito area",
+      "subtitle": "Cambia area senza perdere lo storico della chat.",
+      "allAreas": "Tutte le aree"
+    },
+    "empty": {
+      "startTitle": "Inizia una nuova chat",
+      "startText": "Le risposte restano nell'ambito delle aree che scegli."
+    },
+    "history": {
+      "title": "Le tue conversazioni",
+      "creating": "Creazione in corso...",
+      "searchLabel": "Cerca",
+      "searchPlaceholder": "Cerca per titolo",
+      "empty": {
+        "title": "Nessuna chat",
+        "text": "Crea una chat per iniziare a fare domande."
+      }
+    },
+    "settings": {
+      "eyebrow": "Impostazioni risposta",
+      "title": "Tono e accuratezza",
+      "button": "Impostazioni risposta",
+      "toneHelp": "Il tono guida come parla l'assistente.",
+      "tones": {
+        "executiveDesc": "Aggiornamenti concisi e adatti a un senior.",
+        "technicalDesc": "Tono preciso, dettagliato e tecnico.",
+        "colloquialDesc": "Linguaggio semplice e amichevole."
+      },
+      "accuracyTarget": "Target di accuratezza",
+      "accuracyHelp": "Un'accuratezza più alta è più lenta ma più prudente.",
+      "accuracyMode": {
+        "high": "Accuratezza alta: fonti rigorose, risposte più lunghe.",
+        "fast": "Modalità veloce: risposte brevi, fonti più leggere.",
+        "balanced": "Bilanciato: mix tra velocità e qualità."
+      },
+      "appliesToNewMessages": "Le impostazioni si applicano ai nuovi messaggi in questa chat."
+    },
+    "conversationTitlePlaceholder": "Titolo conversazione",
+    "scopedToSelection": "Le risposte sono limitate a questa selezione",
+    "composer": {
+      "placeholder": "Chiedi qualsiasi cosa su quest'area. Invio per inviare, Shift+Invio per andare a capo.",
+      "scopedHint": "Limitato alle aree selezionate.",
+      "sending": "Invio in corso...",
+      "send": "Invia"
+    },
+    "meta": {
+      "confidence": "Confidenza: {{confidence}}%",
+      "accuracy": "Accuratezza {{accuracy}}%"
+    },
+    "actions": {
+      "exportMd": "Esporta MD",
+      "sourcesUsed": "Fonti usate"
+    },
+    "sources": {
+      "document": "Documento {{id}}",
+      "area": "Area {{id}}"
+    },
+    "errors": {
+      "unableToLoadConversation": "Impossibile caricare la conversazione",
+      "unableToLoadConversations": "Impossibile caricare le conversazioni",
+      "unableToCreateChat": "Impossibile creare la chat",
+      "requestFailed": "Richiesta non riuscita",
+      "unableToDeleteConversation": "Impossibile eliminare la conversazione",
+      "unableToRenameConversation": "Impossibile rinominare la conversazione"
+    }
+  }
+  ,
+  "accessRequests": {
+    "title": "Richieste di accesso",
+    "subtitle": "Approva o rifiuta l'accesso alle aree con audit trail chiaro.",
+    "filters": {
+      "all": "Tutte"
+    },
+    "empty": {
+      "title": "Nessuna richiesta"
+    },
+    "decidedOn": "Deciso {{date}}",
+    "errors": {
+      "failedToLoad": "Impossibile caricare le richieste",
+      "failedToApprove": "Impossibile approvare",
+      "failedToReject": "Impossibile rifiutare"
+    }
+  }
+  ,
+  "askAiDrawer": {
+    "title": "Le risposte restano nel tuo workspace",
+    "subtitle": "Imposta tono e accuratezza prima di inviare.",
+    "chooseArea": "Scegli un'area",
+    "empty": {
+      "title": "Seleziona un'area per iniziare",
+      "text": "Manteniamo le risposte AI all'interno delle aree del workspace."
+    },
+    "errors": {
+      "selectAreaFirst": "Seleziona prima un'area."
+    }
+  }
+  ,
+  "knowledgeBase": {
+    "hero": {
+      "title": "Messaggi approvati, strutturati per il riuso.",
+      "subtitle": "Organizza contenuti specifici per settore, blocchi di outreach e proof point con tassonomia coerente."
+    },
+    "loadingMeta": "Caricamento aree e tag...",
+    "actions": {
+      "newItem": "Nuovo contenuto",
+      "showApproved": "Mostra approvati ({{count}})",
+      "retry": "Riprova",
+      "archive": "Archivia"
+    },
+    "stats": {
+      "approvedItems": "Elementi approvati",
+      "totalItems": "Elementi totali",
+      "activeFilters": "Filtri attivi",
+      "languages": "Lingue",
+      "all": "Tutte"
+    },
+    "filters": {
+      "areas": "Aree",
+      "allAreas": "Tutte le aree",
+      "searchPlaceholder": "Cerca titolo o sommario",
+      "allCollections": "Tutte le collezioni",
+      "anyStatus": "Qualsiasi stato",
+      "languagePlaceholder": "Lingua (en, it)",
+      "noTagsYet": "Nessun tag."
+    },
+    "library": {
+      "eyebrow": "Libreria contenuti",
+      "title": "I contenuti approvati compaiono per primi",
+      "itemsCount": "{{count}} elementi",
+      "updatedOn": "{{language}} - Aggiornato {{date}}",
+      "empty": {
+        "title": "Nessun contenuto",
+        "text": "Crea un elemento o modifica i filtri."
+      }
+    },
+    "detail": {
+      "edit": "Modifica",
+      "create": "Crea",
+      "title": "Dettagli contenuto",
+      "subtitle": "Promuovi elementi approvati per il riuso."
+    },
+    "messages": {
+      "created": "Contenuto creato.",
+      "updated": "Contenuto aggiornato.",
+      "archived": "Contenuto archiviato."
+    },
+    "errors": {
+      "failedToLoadMeta": "Impossibile caricare i metadati della knowledge base.",
+      "failedToLoadItems": "Impossibile caricare i contenuti.",
+      "areaAndTitleRequired": "Area e titolo sono obbligatori.",
+      "failedToSave": "Impossibile salvare il contenuto.",
+      "failedToArchive": "Impossibile archiviare il contenuto."
+    },
+    "tagRequest": {
+      "eyebrow": "Richiedi nuovo tag",
+      "required": "Scegli una categoria e un'etichetta per richiedere un tag.",
+      "submitted": "Richiesta tag inviata.",
+      "failed": "Impossibile inviare la richiesta tag.",
+      "labelPlaceholder": "Etichetta nuovo tag",
+      "noteOptional": "Nota (opzionale)",
+      "notePlaceholder": "Perché serve?",
+      "submit": "Richiedi tag"
+    },
+    "form": {
+      "collection": "Collezione",
+      "noCollection": "Nessuna collezione",
+      "summary": "Sommario",
+      "body": "Testo",
+      "metricsOptional": "ROI / Metriche (opzionale)",
+      "owner": "Owner / Autore",
+      "optional": "Opzionale"
+    },
+    "tags": {
+      "taxonomy": "Tag (tassonomia)",
+      "noFunnelStage": "Nessuna fase funnel",
+      "additionalOptional": "Tag aggiuntivi (opzionale)",
+      "help": "Usa i tag di tassonomia per output coerenti e mirati."
+    }
+  }
+}

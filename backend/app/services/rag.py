@@ -453,6 +453,28 @@ def _render_sources_section(sources: List[Dict[str, Any]], locale: str = "en") -
         lines.append(f"- {title} ({detail})")
     return "\n".join(lines)
 
+def _enforce_localized_headings(answer: str, locale: str) -> str:
+    """
+    Post-process guardrail to avoid English section headings when locale=it.
+    Only rewrites known heading lines (start-of-line + colon).
+    """
+    if not answer:
+        return answer
+    if not (locale or "").lower().startswith("it"):
+        return answer
+
+    replacements = {
+        "Quick answer:": "Risposta rapida:",
+        "How to do it:": "Come fare:",
+        "Watch out for:": "Attenzione:",
+        "Next steps:": "Prossimi passi:",
+        "Sources:": "Fonti:",
+    }
+    out = answer
+    for src, dst in replacements.items():
+        out = re.sub(rf"(?m)^{re.escape(src)}\s*", dst + " ", out)
+    return out
+
 
 def build_prompt_style(accuracy_level: AccuracyLevel, answer_tone: AnswerTone, locale: str = "en") -> str:
     guide = get_tone_guide(answer_tone, locale=locale)
@@ -709,6 +731,7 @@ def answer_with_rag(
     generation_ms = int((time.time() - gen_start) * 1000)
 
     answer = (resp.choices[0].message.content or "").strip()
+    answer = _enforce_localized_headings(answer, locale=locale)
     if (sources_label.lower() not in answer.lower()):
         answer = f"{answer}\n\n{_render_sources_section(sources, locale=locale)}"
     usage = getattr(resp, "usage", None)

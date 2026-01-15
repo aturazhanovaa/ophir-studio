@@ -43,8 +43,10 @@ def estimate_tokens(text: str, model: Optional[str] = None) -> int:
         except Exception:
             # fall through to heuristic
             pass
-    # Heuristic: average ~4 characters per token in English-ish text.
-    return max(1, (len(text) + 3) // 4)
+    # Heuristic (conservative): ~3 characters per token.
+    # This intentionally over-estimates to keep per-request token totals safely under provider limits
+    # when tiktoken is unavailable.
+    return max(1, (len(text) + 2) // 3)
 
 
 @dataclass(frozen=True)

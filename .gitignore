@@ -4,6 +4,7 @@ dist/
 .env
 .env.*
 .venv/
+*.db
 *.log
 *.tsbuildinfo
 __pycache__/

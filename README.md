@@ -1,5 +1,26 @@
 # Studio Knowledge Hub – Dev Notes
 
+## Deploy to Render (Blueprint)
+
+This repo can be deployed on Render using the root `render.yaml` Blueprint:
+
+1) Push this repo to GitHub.
+2) In Render: **New** → **Blueprint** → select the repo.
+3) Set env vars:
+   - Backend (`ophir-backend`):
+     - `DATABASE_URL` = optional; if unset defaults to `sqlite:///./app.db`
+       - For persistence on Render, attach a persistent disk (e.g. mounted at `/data`) and set:
+         - `DATABASE_URL=sqlite:////data/app.db`
+         - `DATA_DIR=/data`
+     - `FRONTEND_ORIGIN` = your Render Static Site URL (e.g. `https://ophir-frontend.onrender.com`)
+     - `JWT_SECRET`, `OPENAI_API_KEY` (and optional: `NOTION_API_KEY`, `INTEGRATION_KEY`)
+   - Frontend (`ophir-frontend`):
+     - `VITE_API_URL` = your backend Render URL (e.g. `https://ophir-backend.onrender.com`)
+
+Smoke test:
+- Backend health: `https://<backend>/health`
+- Backend docs: `https://<backend>/docs`
+
 ## Seed users (created at startup)
 - Super Admin: `superadmin@studio.local` / `Super123!`
 - Admin: `admin@studio.local` / `Admin123!`
@@ -10,6 +31,13 @@
 ```bash
 cd backend
 uvicorn app.main:app --reload --port 8000
+```
+
+## Quick frontend start
+```bash
+cd frontend
+npm install
+npm run dev
 ```
 
 ## Notion Messaging Blocks Mapping

@@ -32,9 +32,14 @@ class Settings(BaseSettings):
     supabase_service_role_key: str = Field(default="", alias="SUPABASE_SERVICE_ROLE_KEY")
     supabase_storage_bucket: str = Field(default="legal-examples", alias="SUPABASE_STORAGE_BUCKET")
 
+    # CORS (Render)
+    # If set, the API allows only this frontend origin (recommended for production).
+    frontend_origin: str = Field(default="", alias="FRONTEND_ORIGIN")
     cors_origins: str = Field(default="http://localhost:5173,http://127.0.0.1:5173", alias="CORS_ORIGINS")
 
     def cors_list(self) -> List[str]:
+        if self.frontend_origin.strip():
+            return [self.frontend_origin.strip()]
         return [x.strip() for x in self.cors_origins.split(",") if x.strip()]
 
     def is_postgres(self) -> bool:

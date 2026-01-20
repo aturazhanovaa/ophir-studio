@@ -812,12 +812,6 @@ async def upload_examples(
     if not document_type.strip():
         raise HTTPException(status_code=400, detail="document_type is required")
 
-    if settings.app_env != "local" and settings.storage_provider != "supabase":
-        raise HTTPException(
-            status_code=500,
-            detail="Misconfiguration: STORAGE_PROVIDER must be 'supabase' in non-local environments (Render filesystem is ephemeral).",
-        )
-
     max_bytes = 25 * 1024 * 1024
     allowed_ext = {".pdf", ".docx", ".txt", ".md"}
     created: list[LegalExampleOut] = []

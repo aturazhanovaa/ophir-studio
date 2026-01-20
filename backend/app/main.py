@@ -1,3 +1,4 @@
+import logging
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
@@ -24,6 +25,7 @@ from app.routers import (
 )
 
 app = FastAPI(title=settings.app_name)
+logger = logging.getLogger("app")
 
 app.add_middleware(
     CORSMiddleware,
@@ -38,6 +40,10 @@ def startup():
     db: Session = SessionLocal()
     try:
         init_db(db)
+    except Exception:
+        # Allow the server to start even if DB is unreachable (Render boot, network hiccups).
+        # DB-dependent endpoints will still fail, but /health remains available.
+        logger.exception("Startup DB init failed (continuing without DB)")
     finally:
         db.close()
 
@@ -58,4 +64,4 @@ app.include_router(legal.router)
 
 @app.get("/health")
 def health():
-    return {"ok": True, "env": settings.app_env}
+    return {"status": "ok"}

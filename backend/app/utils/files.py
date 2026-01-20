@@ -1,5 +1,6 @@
 import os
 import uuid
+import logging
 from app.core.config import settings
 from app.services.supabase_storage import (
     SupabaseStorageError,
@@ -7,13 +8,15 @@ from app.services.supabase_storage import (
     upload_bytes,
 )
 
+logger = logging.getLogger("app.storage")
+
 def uploads_dir() -> str:
     return os.path.join(settings.data_dir, "uploads")
 
 def save_upload_bytes(content: bytes, original_name: str, content_type: str = "application/octet-stream") -> str:
     if settings.app_env != "local" and settings.storage_provider != "supabase":
-        raise RuntimeError(
-            "Misconfiguration: STORAGE_PROVIDER must be 'supabase' in non-local environments (Render filesystem is ephemeral)."
+        logger.warning(
+            "STORAGE_PROVIDER is not 'supabase' in non-local env; uploads will be stored on local disk (ephemeral on Render unless you add a persistent disk)."
         )
 
     ext = ""

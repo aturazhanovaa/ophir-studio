@@ -1,4 +1,5 @@
 import logging
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
@@ -24,8 +25,9 @@ from app.routers import (
     legal,
 )
 
-app = FastAPI(title=settings.app_name)
 logger = logging.getLogger("app")
+
+app = FastAPI(title=settings.app_name)
 
 app.add_middleware(
     CORSMiddleware,
@@ -35,6 +37,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.on_event("startup")
 def startup():
     db: Session = SessionLocal()
@@ -42,11 +45,13 @@ def startup():
         init_db(db)
     except Exception:
         # Allow the server to start even if DB is unreachable (Render boot, network hiccups).
-        # DB-dependent endpoints will still fail, but /health remains available.
+        # DB-dependent endpoints may fail until DB is available.
         logger.exception("Startup DB init failed (continuing without DB)")
     finally:
         db.close()
 
+
+# ---------- Routers ----------
 app.include_router(auth.router)
 app.include_router(areas.router)
 app.include_router(documents.router)
@@ -62,6 +67,37 @@ app.include_router(ai.router)
 app.include_router(playground.router)
 app.include_router(legal.router)
 
+
+# ---------- Health / Root ----------
+@app.get("/")
+def root():
+    return {
+        "status": "ok",
+        "service": settings.app_name,
+        "docs": "/docs",
+        "health": "/health",
+    }
+
+
 @app.get("/health")
 def health():
+    # Must not depend on DB (Render healthchecks / simple uptime check)
     return {"status": "ok"}
+
+
+@app.get("/ready")
+def ready():
+    """
+    Optional readiness check:
+    - returns ok if DB connection works
+    - returns degraded if DB is unavailable
+    """
+    db: Session = SessionLocal()
+    try:
+        db.execute("SELECT 1")
+        return {"status": "ok", "db": "ok"}
+    except Exception:
+        logger.exception("Readiness DB check failed")
+        return {"status": "degraded", "db": "unavailable"}
+    finally:
+        db.close()

@@ -1,6 +1,8 @@
 import { getPersistedLocale } from "../i18n/locale";
 
-export const API_BASE = import.meta.env.VITE_API_BASE_URL ;
+export const API_BASE =
+  import.meta.env.VITE_API_URL ||
+  import.meta.env.VITE_API_BASE_URL ;
 
 export function setToken(token: string) {
   localStorage.setItem("skh_token", token);

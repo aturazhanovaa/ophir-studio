@@ -9,6 +9,8 @@ export default function OverviewPage({
   onOpenAccess,
   onOpenDocuments,
   onOpenAsk,
+  onOpenLegalNew,
+  canCreateLegal,
   loading,
 }: {
   areas: Area[];
@@ -17,6 +19,8 @@ export default function OverviewPage({
   onOpenAccess: () => void;
   onOpenDocuments: () => void;
   onOpenAsk: () => void;
+  onOpenLegalNew: () => void;
+  canCreateLegal: boolean;
   loading: boolean;
 }) {
   const { t: tDash } = useTranslation("dashboard");
@@ -51,6 +55,13 @@ export default function OverviewPage({
             description={tDash("overview.documentsDesc")}
             onClick={onOpenDocuments}
           />
+          {canCreateLegal && (
+            <ActionCard
+              title={tDash("overview.legalCreateTitle")}
+              description={tDash("overview.legalCreateDesc")}
+              onClick={onOpenLegalNew}
+            />
+          )}
           <ActionCard
             title={tDash("overview.askAiTitle")}
             description={tDash("overview.askAiDesc")}

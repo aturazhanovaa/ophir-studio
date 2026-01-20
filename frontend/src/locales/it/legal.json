@@ -1,0 +1,279 @@
+{
+  "module": {
+    "eyebrow": "Legale",
+    "title": "Flussi legali",
+    "subtitle": "Crea contratti e documentazione correlata.",
+    "actions": {
+      "createDocument": "Crea documento"
+    },
+    "tabs": {
+      "overview": "Panoramica",
+      "documents": "Documenti",
+      "templates": "Template",
+      "examples": "Esempi"
+    },
+    "noAccess": {
+      "title": "Legale",
+      "text": "Non hai accesso al modulo Legale."
+    }
+  },
+  "actions": {
+    "next": "Avanti"
+  },
+  "templates": {
+    "eyebrow": "Template",
+    "title": "Contenuti legali riutilizzabili",
+    "subtitle": "Definisci variabili come {{example}} e approvatori predefiniti.",
+    "filters": {
+      "search": "Cerca",
+      "searchPlaceholder": "Cerca per nome, tipo o contenuto…",
+      "type": "Tipo",
+      "allTypes": "Tutti i tipi"
+    },
+    "table": {
+      "name": "Nome",
+      "type": "Tipo",
+      "variables": "Variabili",
+      "approvers": "Approvatori",
+      "updated": "Aggiornato"
+    },
+    "actions": {
+      "createTemplate": "Crea template",
+      "duplicate": "Duplica",
+      "copySuffix": "copia"
+    },
+    "toast": {
+      "duplicated": "Template duplicato.",
+      "deleted": "Template eliminato."
+    },
+    "errors": {
+      "failedToLoad": "Impossibile caricare i template.",
+      "failedToDuplicate": "Impossibile duplicare il template.",
+      "failedToDelete": "Impossibile eliminare il template."
+    },
+    "empty": {
+      "title": "Nessun template ancora",
+      "text": "Crea un template per standardizzare i documenti legali."
+    },
+    "confirmDelete": "Eliminare il template “{{name}}”?"
+  },
+  "templateEditor": {
+    "eyebrow": "Template",
+    "titleCreate": "Crea template",
+    "titleEdit": "Modifica template",
+    "subtitle": "I template aiutano a creare contratti coerenti più velocemente.",
+    "fields": {
+      "name": "Nome",
+      "type": "Tipo",
+      "variables": "Variabili",
+      "variablesPlaceholder": "Aggiungi una variabile e premi Invio…",
+      "approvers": "Approvatori predefiniti",
+      "approversPlaceholder": "Cerca e seleziona gli approvatori…",
+      "body": "Contenuto",
+      "bodyPlaceholder": "Scrivi il contenuto del template. Usa placeholder come {{example}}."
+    },
+    "actions": {
+      "backToList": "Torna ai template",
+      "save": "Salva",
+      "saving": "Salvataggio…",
+      "delete": "Elimina",
+      "removeVar": "Rimuovi {{key}}",
+      "addPrefix": "+"
+    },
+    "users": {
+      "empty": "Nessun utente disponibile.",
+      "noMatches": "Nessuna corrispondenza."
+    },
+    "toast": {
+      "created": "Template creato.",
+      "saved": "Template salvato.",
+      "deleted": "Template eliminato."
+    },
+    "errors": {
+      "requiredFields": "Nome, tipo e contenuto sono obbligatori.",
+      "failedToLoad": "Impossibile caricare il template.",
+      "failedToSave": "Impossibile salvare il template.",
+      "failedToDelete": "Impossibile eliminare il template."
+    },
+    "confirmDelete": "Eliminare il template “{{name}}”?",
+    "noAccess": {
+      "title": "Template",
+      "text": "Non hai i permessi per gestire i template."
+    },
+    "discoveredVars": "Rilevati {{count}} placeholder nel contenuto."
+  },
+  "templateExamples": {
+    "eyebrow": "Esempi",
+    "title": "Esempi del template",
+    "subtitle": "Carica accordi di esempio per il recupero durante la generazione.",
+    "actions": {
+      "refresh": "Aggiorna",
+      "download": "Scarica",
+      "retry": "Riprova",
+      "rename": "Rinomina",
+      "detach": "Scollega",
+      "delete": "Elimina"
+    },
+    "upload": {
+      "documentType": "Tipo documento",
+      "typePlaceholder": "es. NDA",
+      "files": "File",
+      "upload": "Carica",
+      "uploading": "Caricamento…"
+    },
+    "table": {
+      "file": "File",
+      "type": "Tipo",
+      "status": "Stato",
+      "uploaded": "Caricato"
+    },
+    "empty": {
+      "title": "Nessun esempio collegato",
+      "text": "Carica esempi per aiutare il sistema a ricordare clausole utili."
+    },
+    "toast": {
+      "uploaded": "Esempi caricati.",
+      "renamed": "Esempio rinominato.",
+      "detached": "Esempio scollegato.",
+      "deleted": "Esempio eliminato."
+    },
+    "errors": {
+      "failedToUpload": "Caricamento non riuscito."
+    },
+    "promptRename": "Rinomina esempio",
+    "confirmDelete": "Eliminare l’esempio “{{name}}”?"
+  },
+  "newDoc": {
+    "eyebrow": "Legale",
+    "title": "Nuovo documento",
+    "subtitle": "Inizia da un template o crea un documento vuoto.",
+    "mode": {
+      "fromTemplate": "Da template",
+      "blank": "Vuoto"
+    },
+    "noAccess": {
+      "title": "Nuovo documento",
+      "text": "Non hai i permessi per creare documenti legali."
+    },
+    "toast": {
+      "created": "Documento creato."
+    },
+    "errors": {
+      "failedToCreate": "Impossibile creare il documento.",
+      "failedToGenerate": "Impossibile generare l’anteprima.",
+      "pickTemplate": "Seleziona prima un template."
+    },
+    "wizard": {
+      "eyebrow": "Wizard",
+      "title": "Crea da template",
+      "step": "Passo {{step}} di {{total}}",
+      "noTemplates": {
+        "title": "Nessun template ancora",
+        "text": "Passa a “Vuoto” per creare un documento senza template."
+      },
+      "step1": {
+        "search": "Cerca template",
+        "searchPlaceholder": "Cerca per nome o tipo…",
+        "type": "Tipo",
+        "allTypes": "Tutti i tipi",
+        "titleLabel": "Titolo documento",
+        "titlePlaceholder": "Titolo"
+      },
+      "step2": {
+        "noVars": "Questo template non ha variabili dichiarate. Puoi comunque generare un’anteprima.",
+        "examplesLabel": "Esempi di riferimento",
+        "examplesHelp": "Seleziona esempi da usare come riferimento durante la generazione (predefiniti quelli collegati al template).",
+        "noExamples": "Nessun esempio READY disponibile.",
+        "generate": "Genera anteprima",
+        "generating": "Generazione…"
+      },
+      "step3": {
+        "preview": "Anteprima",
+        "usedExamples": "Generato usando esempi: {{count}} selezionati."
+      },
+      "step4": {
+        "help": "Crea un documento in bozza. Invia per revisione dalla pagina di dettaglio.",
+        "create": "Crea documento"
+      }
+    },
+    "blank": {
+      "eyebrow": "Bozza",
+      "title": "Documento vuoto",
+      "subtitle": "Usa placeholder come {{example}} e mantieni le variabili sincronizzate.",
+      "defaultType": "Contratto",
+      "untitled": "Documento legale senza titolo",
+      "titlePlaceholder": "es. Master Services Agreement",
+      "type": "Tipo",
+      "typePlaceholder": "es. MSA",
+      "counterparty": "Controparte",
+      "counterpartyPlaceholder": "Azienda / cliente",
+      "counterpartyEmail": "Email controparte",
+      "dueDate": "Scadenza",
+      "expiryDate": "Data di fine",
+      "content": "Contenuto",
+      "variables": "Variabili",
+      "addVar": "Aggiungi variabile",
+      "removeVar": "Rimuovi variabile",
+      "create": "Crea documento"
+    }
+  }
+  ,
+  "examples": {
+    "eyebrow": "Esempi",
+    "title": "Libreria esempi legali",
+    "subtitle": "Carica contratti di esempio da riutilizzare durante generazione e modifica.",
+    "filters": {
+      "search": "Cerca",
+      "searchPlaceholder": "Cerca nome file o testo estratto…",
+      "type": "Tipo documento",
+      "template": "Template",
+      "allTemplates": "Tutti i template",
+      "status": "Stato",
+      "allStatuses": "Tutti gli stati"
+    },
+    "upload": {
+      "title": "Carica esempi",
+      "subtitle": "PDF, DOCX, TXT (max 25MB). Il testo estratto viene salvato per ricerca e recupero.",
+      "documentType": "Tipo documento",
+      "files": "File",
+      "upload": "Carica",
+      "uploading": "Caricamento…"
+    },
+    "empty": {
+      "title": "Nessun esempio ancora",
+      "text": "Carica contratti di esempio per creare una libreria di riferimento."
+    },
+    "actions": {
+      "retry": "Riprova estrazione",
+      "rename": "Rinomina",
+      "attachDetach": "Collega/Scollega",
+      "delete": "Elimina"
+    },
+    "table": {
+      "count": "{{count}} totali",
+      "title": "Titolo / nome file",
+      "type": "Tipo",
+      "template": "Template",
+      "status": "Stato",
+      "uploadedBy": "Caricato da",
+      "updated": "Aggiornato"
+    },
+    "toast": {
+      "uploaded": "Esempi caricati.",
+      "retryQueued": "Riprova avviata.",
+      "renamed": "Esempio rinominato.",
+      "updated": "Esempio aggiornato.",
+      "deleted": "Esempio eliminato."
+    },
+    "errors": {
+      "failedToLoad": "Impossibile caricare gli esempi.",
+      "pickFiles": "Seleziona uno o più file da caricare.",
+      "failedToUpload": "Impossibile caricare gli esempi.",
+      "failedToDownload": "Download non riuscito.",
+      "failedToRetry": "Riprova non riuscita."
+    },
+    "promptRename": "Rinomina esempio",
+    "promptAttachTemplate": "Collega a ID template (vuoto per scollegare)",
+    "confirmDelete": "Eliminare l’esempio “{{name}}”?"
+  }
+}

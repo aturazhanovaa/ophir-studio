@@ -1,0 +1,10 @@
+{
+  "colors": {
+    "primary": "#3B82F6",
+    "text": "#111827",
+    "bg": "#FFFFFF",
+    "border": "#E5E7EB"
+  },
+  "spacing": [4, 8, 12, 16, 24, 32, 40],
+  "radius": [8, 12, 16]
+}

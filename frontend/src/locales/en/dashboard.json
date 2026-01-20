@@ -16,6 +16,7 @@
     "adminSettings": "Admin - Settings",
     "askAi": "Ask AI",
     "playground": "Playground",
+    "legal": "Legal",
     "workspace": "Workspace"
   },
   "overview": {
@@ -27,6 +28,8 @@
     "jumpToWorkflows": "Jump to key workflows",
     "documentsTitle": "Documents",
     "documentsDesc": "Search, filter, and manage files.",
+    "legalCreateTitle": "Create legal document",
+    "legalCreateDesc": "Draft contracts and related documentation.",
     "askAiTitle": "Ask AI",
     "askAiDesc": "Draft answers with approved sources.",
     "accessCenterTitle": "Access Center",

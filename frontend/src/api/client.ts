@@ -210,6 +210,110 @@ export type AccessRequest = {
   } | null;
 };
 
+export type LegalDocumentStatus =
+  | "DRAFT"
+  | "IN_REVIEW"
+  | "CHANGES_REQUESTED"
+  | "APPROVED"
+  | "SIGNED"
+  | "ARCHIVED"
+  | "REJECTED";
+
+export type LegalApprovalDecision = "PENDING" | "APPROVED" | "REJECTED" | "CHANGES_REQUESTED";
+
+export type LegalAuditLog = {
+  id: number;
+  document_id?: number | null;
+  actor_id?: number | null;
+  action: string;
+  metadata?: Record<string, any> | null;
+  created_at: string;
+};
+
+export type LegalApproval = {
+  id: number;
+  document_id: number;
+  step_number: number;
+  approver_id: number;
+  decision: LegalApprovalDecision;
+  comment?: string | null;
+  decided_at?: string | null;
+};
+
+export type LegalVersion = {
+  id: number;
+  document_id: number;
+  version_number: number;
+  content: string;
+  variables?: Record<string, any> | null;
+  created_by?: number | null;
+  created_at: string;
+};
+
+export type LegalDocument = {
+  id: number;
+  title: string;
+  type: string;
+  counterparty_name?: string | null;
+  counterparty_email?: string | null;
+  owner_id: number;
+  owner_name?: string | null;
+  owner_email?: string | null;
+  status: LegalDocumentStatus;
+  content: string;
+  variables?: Record<string, any> | null;
+  due_date?: string | null;
+  expiry_date?: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+export type LegalDocumentDetail = LegalDocument & { approvals: LegalApproval[] };
+
+export type LegalTemplate = {
+  id: number;
+  name: string;
+  type: string;
+  body: string;
+  variables: string[];
+  default_approvers: number[];
+  created_at: string;
+  updated_at: string;
+};
+
+export type UserRef = { id: number; email: string; full_name: string; role: string };
+
+export type LegalExampleStatus = "UPLOADED" | "EXTRACTING" | "READY" | "FAILED";
+export type LegalExampleScope = "GLOBAL" | "TEMPLATE" | "CLIENT";
+
+export type LegalExample = {
+  id: string;
+  title: string;
+  document_type: string;
+  template_id?: number | null;
+  scope: LegalExampleScope;
+  client_name?: string | null;
+  file_name: string;
+  mime_type: string;
+  file_size: number;
+  uploaded_by: number;
+  uploaded_by_name?: string | null;
+  uploaded_by_email?: string | null;
+  uploaded_at: string;
+  updated_at: string;
+  status: LegalExampleStatus;
+  error_message?: string | null;
+  tags: string[];
+};
+
+export type LegalExamplesList = { items: LegalExample[]; total: number };
+
+export type LegalOverview = {
+  counts: Record<string, number>;
+  expiring_soon: number;
+  recent_activity: LegalAuditLog[];
+};
+
 export const api = {
   login: (email: string, password: string) =>
     request("/auth/login", {
@@ -407,6 +511,243 @@ export const api = {
     const disposition = res.headers.get("content-disposition") || "";
     const match = disposition.match(/filename=\"?([^\";]+)\"?/i);
     const filename = (match && match[1]) || `document-${docId}${version ? `-v${version}` : ""}`;
+    const blob = await res.blob();
+    return { blob, filename };
+  },
+
+  legalOverview: () => request("/api/legal/overview") as Promise<LegalOverview>,
+  listLegalDocuments: (params?: {
+    q?: string;
+    status?: LegalDocumentStatus | "";
+    type?: string;
+    owner_id?: number;
+    counterparty?: string;
+    sort?: "updated" | "expiry";
+  }) => {
+    const qs = new URLSearchParams();
+    if (params?.q) qs.set("q", params.q);
+    if (params?.status) qs.set("status", params.status);
+    if (params?.type) qs.set("type", params.type);
+    if (params?.owner_id) qs.set("owner_id", String(params.owner_id));
+    if (params?.counterparty) qs.set("counterparty", params.counterparty);
+    if (params?.sort) qs.set("sort", params.sort);
+    return request(`/api/legal/documents${qs.toString() ? `?${qs.toString()}` : ""}`) as Promise<LegalDocument[]>;
+  },
+  createLegalDocument: (payload: {
+    title: string;
+    type: string;
+    counterparty_name?: string;
+    counterparty_email?: string;
+    content?: string;
+    variables?: Record<string, any>;
+    due_date?: string | null;
+    expiry_date?: string | null;
+  }) =>
+    request("/api/legal/documents", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }) as Promise<LegalDocument>,
+  getLegalDocument: (id: number) => request(`/api/legal/documents/${id}`) as Promise<LegalDocumentDetail>,
+  updateLegalDocument: (
+    id: number,
+    payload: Partial<{
+      title: string;
+      counterparty_name: string;
+      counterparty_email: string;
+      content: string;
+      variables: Record<string, any>;
+      due_date: string | null;
+      expiry_date: string | null;
+    }>
+  ) =>
+    request(`/api/legal/documents/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }) as Promise<LegalDocument>,
+  duplicateLegalDocument: (id: number) =>
+    request(`/api/legal/documents/${id}/duplicate`, { method: "POST" }) as Promise<LegalDocument>,
+  submitLegalDocumentForReview: (id: number, payload?: { approver_ids?: number[] }) =>
+    request(`/api/legal/documents/${id}/submit-review`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload || {}),
+    }) as Promise<LegalDocumentDetail>,
+  approveLegalDocument: (id: number, payload?: { comment?: string }) =>
+    request(`/api/legal/documents/${id}/approve`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload || {}),
+    }) as Promise<LegalDocumentDetail>,
+  requestChangesLegalDocument: (id: number, payload?: { comment?: string }) =>
+    request(`/api/legal/documents/${id}/request-changes`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload || {}),
+    }) as Promise<LegalDocumentDetail>,
+  markSignedLegalDocument: (id: number) =>
+    request(`/api/legal/documents/${id}/mark-signed`, { method: "POST" }) as Promise<LegalDocument>,
+  archiveLegalDocument: (id: number) =>
+    request(`/api/legal/documents/${id}/archive`, { method: "POST" }) as Promise<LegalDocument>,
+  getLegalAudit: (id: number) => request(`/api/legal/documents/${id}/audit`) as Promise<LegalAuditLog[]>,
+  getLegalVersions: (id: number) => request(`/api/legal/documents/${id}/versions`) as Promise<LegalVersion[]>,
+
+  listLegalTemplates: () => request("/api/legal/templates") as Promise<LegalTemplate[]>,
+  getLegalTemplate: (id: number) => request(`/api/legal/templates/${id}`) as Promise<LegalTemplate>,
+  createLegalTemplate: (payload: { name: string; type: string; body: string; variables?: string[]; default_approvers?: number[] }) =>
+    request("/api/legal/templates", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }) as Promise<LegalTemplate>,
+  updateLegalTemplate: (
+    id: number,
+    payload: Partial<{ name: string; type: string; body: string; variables: string[]; default_approvers: number[] }>
+  ) =>
+    request(`/api/legal/templates/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }) as Promise<LegalTemplate>,
+  deleteLegalTemplate: (id: number) => request(`/api/legal/templates/${id}`, { method: "DELETE" }) as Promise<void>,
+  generateLegalTemplate: (id: number, payload: { variables: Record<string, any>; selected_example_ids?: string[]; title?: string; counterparty_name?: string }) =>
+    request(`/api/legal/templates/${id}/generate`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }) as Promise<{ content: string; variables: Record<string, any>; used_example_ids: string[]; used_snippets: string[] }>,
+
+  listLegalUsers: () => request("/api/legal/users") as Promise<UserRef[]>,
+
+  uploadLegalExamples: async (payload: {
+    files: File[];
+    document_type: string;
+    template_id?: number | null;
+    title?: string;
+    scope?: LegalExampleScope;
+    client_name?: string;
+    tags?: string[];
+  }) => {
+    const token = getToken();
+    const headers: Record<string, string> = {};
+    if (token) headers["Authorization"] = `Bearer ${token}`;
+
+    const form = new FormData();
+    payload.files.forEach((f) => form.append("files", f));
+    form.set("document_type", payload.document_type);
+    if (payload.template_id !== undefined && payload.template_id !== null) form.set("template_id", String(payload.template_id));
+    if (payload.title) form.set("title", payload.title);
+    if (payload.scope) form.set("scope", payload.scope);
+    if (payload.client_name) form.set("client_name", payload.client_name);
+    if (payload.tags && payload.tags.length) form.set("tags", payload.tags.join(","));
+
+    const url = `${API_BASE}/api/legal/examples`;
+    const res = await fetch(url, { method: "POST", headers, body: form });
+    const contentType = res.headers.get("content-type") || "";
+    if (!res.ok) {
+      let msg = `HTTP ${res.status}`;
+      try {
+        const data = contentType.includes("application/json") ? await res.json() : await res.text();
+        msg =
+          (data && typeof data === "object" && "detail" in data && (data as any).detail) ||
+          (typeof data === "string" && data) ||
+          msg;
+      } catch {
+        // ignore
+      }
+      throw new Error(msg);
+    }
+    return (await res.json()) as LegalExample[];
+  },
+  listLegalExamples: (params?: {
+    q?: string;
+    document_type?: string;
+    template_id?: number;
+    status?: LegalExampleStatus;
+    scope?: LegalExampleScope;
+    counterparty_name?: string;
+    limit?: number;
+    offset?: number;
+  }) => {
+    const qs = new URLSearchParams();
+    if (params?.q) qs.set("q", params.q);
+    if (params?.document_type) qs.set("document_type", params.document_type);
+    if (params?.template_id) qs.set("template_id", String(params.template_id));
+    if (params?.status) qs.set("status", params.status);
+    if (params?.scope) qs.set("scope", params.scope);
+    if (params?.counterparty_name) qs.set("counterparty_name", params.counterparty_name);
+    if (params?.limit) qs.set("limit", String(params.limit));
+    if (params?.offset) qs.set("offset", String(params.offset));
+    return request(`/api/legal/examples${qs.toString() ? `?${qs.toString()}` : ""}`) as Promise<LegalExamplesList>;
+  },
+  getLegalExample: (id: string, params?: { counterparty_name?: string }) => {
+    const qs = new URLSearchParams();
+    if (params?.counterparty_name) qs.set("counterparty_name", params.counterparty_name);
+    return request(`/api/legal/examples/${id}${qs.toString() ? `?${qs.toString()}` : ""}`) as Promise<LegalExample>;
+  },
+  updateLegalExample: (id: string, payload: Partial<{ title: string; document_type: string; template_id: number | null; scope: LegalExampleScope; client_name: string | null; tags: string[] }>) =>
+    request(`/api/legal/examples/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }) as Promise<LegalExample>,
+  deleteLegalExample: (id: string) => request(`/api/legal/examples/${id}`, { method: "DELETE" }) as Promise<void>,
+  retryLegalExample: (id: string) => request(`/api/legal/examples/${id}/retry`, { method: "POST" }) as Promise<{ id: string; status: LegalExampleStatus }>,
+  listTemplateExamples: (templateId: number) => request(`/api/legal/templates/${templateId}/examples`) as Promise<LegalExample[]>,
+  downloadLegalExample: async (id: string, params?: { counterparty_name?: string }) => {
+    const token = getToken();
+    const headers: Record<string, string> = {};
+    if (token) headers["Authorization"] = `Bearer ${token}`;
+    const qs = new URLSearchParams();
+    if (params?.counterparty_name) qs.set("counterparty_name", params.counterparty_name);
+    const url = `${API_BASE}/api/legal/examples/${id}/download${qs.toString() ? `?${qs.toString()}` : ""}`;
+    const res = await fetch(url, { headers });
+    const contentType = res.headers.get("content-type") || "";
+    if (!res.ok) {
+      let msg = `HTTP ${res.status}`;
+      try {
+        const data = contentType.includes("application/json") ? await res.json() : await res.text();
+        msg =
+          (data && typeof data === "object" && "detail" in data && (data as any).detail) ||
+          (typeof data === "string" && data) ||
+          msg;
+      } catch {
+        // ignore
+      }
+      throw new Error(msg);
+    }
+    const disposition = res.headers.get("content-disposition") || "";
+    const match = disposition.match(/filename=\"?([^\";]+)\"?/i);
+    const filename = (match && match[1]) || `legal-example-${id}`;
+    const blob = await res.blob();
+    return { blob, filename };
+  },
+
+  exportLegalDocument: async (id: number, format: "txt" | "pdf" | "docx" = "txt") => {
+    const token = getToken();
+    const headers: Record<string, string> = {};
+    if (token) headers["Authorization"] = `Bearer ${token}`;
+
+    const url = `${API_BASE}/api/legal/documents/${id}/export?format=${format}`;
+    const res = await fetch(url, { headers });
+    const contentType = res.headers.get("content-type") || "";
+    if (!res.ok) {
+      let msg = `HTTP ${res.status}`;
+      try {
+        const data = contentType.includes("application/json") ? await res.json() : await res.text();
+        msg =
+          (data && typeof data === "object" && "detail" in data && (data as any).detail) ||
+          (typeof data === "string" && data) ||
+          msg;
+      } catch {
+        // ignore parse errors
+      }
+      throw new Error(msg);
+    }
+    const disposition = res.headers.get("content-disposition") || "";
+    const match = disposition.match(/filename=\"?([^\";]+)\"?/i);
+    const filename = (match && match[1]) || `legal-document-${id}.${format}`;
     const blob = await res.blob();
     return { blob, filename };
   },

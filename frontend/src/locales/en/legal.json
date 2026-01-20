@@ -1,0 +1,279 @@
+{
+  "module": {
+    "eyebrow": "Legal",
+    "title": "Legal workflows",
+    "subtitle": "Create contracts and related documentation.",
+    "actions": {
+      "createDocument": "Create document"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "documents": "Documents",
+      "templates": "Templates",
+      "examples": "Examples"
+    },
+    "noAccess": {
+      "title": "Legal",
+      "text": "You don’t have access to the Legal module."
+    }
+  },
+  "actions": {
+    "next": "Next"
+  },
+  "templates": {
+    "eyebrow": "Templates",
+    "title": "Reusable legal content",
+    "subtitle": "Define variables like {{example}} and default approvers.",
+    "filters": {
+      "search": "Search",
+      "searchPlaceholder": "Search by name, type, or body…",
+      "type": "Type",
+      "allTypes": "All types"
+    },
+    "table": {
+      "name": "Name",
+      "type": "Type",
+      "variables": "Variables",
+      "approvers": "Approvers",
+      "updated": "Updated"
+    },
+    "actions": {
+      "createTemplate": "Create template",
+      "duplicate": "Duplicate",
+      "copySuffix": "copy"
+    },
+    "toast": {
+      "duplicated": "Template duplicated.",
+      "deleted": "Template deleted."
+    },
+    "errors": {
+      "failedToLoad": "Failed to load templates.",
+      "failedToDuplicate": "Failed to duplicate template.",
+      "failedToDelete": "Failed to delete template."
+    },
+    "empty": {
+      "title": "No templates yet",
+      "text": "Create a template to standardize your legal documents."
+    },
+    "confirmDelete": "Delete template “{{name}}”?"
+  },
+  "templateEditor": {
+    "eyebrow": "Templates",
+    "titleCreate": "Create template",
+    "titleEdit": "Edit template",
+    "subtitle": "Templates help you create consistent contracts quickly.",
+    "fields": {
+      "name": "Name",
+      "type": "Type",
+      "variables": "Variables",
+      "variablesPlaceholder": "Add a variable key and press Enter…",
+      "approvers": "Default approvers",
+      "approversPlaceholder": "Search and select approvers…",
+      "body": "Body",
+      "bodyPlaceholder": "Write template content. Use placeholders like {{example}}."
+    },
+    "actions": {
+      "backToList": "Back to templates",
+      "save": "Save",
+      "saving": "Saving…",
+      "delete": "Delete",
+      "removeVar": "Remove {{key}}",
+      "addPrefix": "+"
+    },
+    "users": {
+      "empty": "No users available.",
+      "noMatches": "No matches."
+    },
+    "toast": {
+      "created": "Template created.",
+      "saved": "Template saved.",
+      "deleted": "Template deleted."
+    },
+    "errors": {
+      "requiredFields": "Name, type, and body are required.",
+      "failedToLoad": "Failed to load template.",
+      "failedToSave": "Failed to save template.",
+      "failedToDelete": "Failed to delete template."
+    },
+    "confirmDelete": "Delete template “{{name}}”?",
+    "noAccess": {
+      "title": "Templates",
+      "text": "You don’t have permission to manage templates."
+    },
+    "discoveredVars": "Discovered {{count}} placeholders in body."
+  },
+  "templateExamples": {
+    "eyebrow": "Examples",
+    "title": "Template examples",
+    "subtitle": "Upload sample agreements for retrieval during generation.",
+    "actions": {
+      "refresh": "Refresh",
+      "download": "Download",
+      "retry": "Retry",
+      "rename": "Rename",
+      "detach": "Detach",
+      "delete": "Delete"
+    },
+    "upload": {
+      "documentType": "Document type",
+      "typePlaceholder": "e.g. NDA",
+      "files": "Files",
+      "upload": "Upload",
+      "uploading": "Uploading…"
+    },
+    "table": {
+      "file": "File",
+      "type": "Type",
+      "status": "Status",
+      "uploaded": "Uploaded"
+    },
+    "empty": {
+      "title": "No examples linked",
+      "text": "Upload examples to help the system remember useful clauses."
+    },
+    "toast": {
+      "uploaded": "Examples uploaded.",
+      "renamed": "Example renamed.",
+      "detached": "Example detached.",
+      "deleted": "Example deleted."
+    },
+    "errors": {
+      "failedToUpload": "Upload failed."
+    },
+    "promptRename": "Rename example",
+    "confirmDelete": "Delete example “{{name}}”?"
+  },
+  "newDoc": {
+    "eyebrow": "Legal",
+    "title": "New document",
+    "subtitle": "Start from a template or create a blank document.",
+    "mode": {
+      "fromTemplate": "From template",
+      "blank": "Blank"
+    },
+    "noAccess": {
+      "title": "New document",
+      "text": "You don’t have permission to create legal documents."
+    },
+    "toast": {
+      "created": "Document created."
+    },
+    "errors": {
+      "failedToCreate": "Failed to create document.",
+      "failedToGenerate": "Failed to generate preview.",
+      "pickTemplate": "Select a template first."
+    },
+    "wizard": {
+      "eyebrow": "Wizard",
+      "title": "Create from template",
+      "step": "Step {{step}} of {{total}}",
+      "noTemplates": {
+        "title": "No templates yet",
+        "text": "Switch to “Blank” to create a document without a template."
+      },
+      "step1": {
+        "search": "Search templates",
+        "searchPlaceholder": "Search by name or type…",
+        "type": "Type",
+        "allTypes": "All types",
+        "titleLabel": "Document title",
+        "titlePlaceholder": "Title"
+      },
+      "step2": {
+        "noVars": "This template has no declared variables. You can still generate a preview.",
+        "examplesLabel": "Reference examples",
+        "examplesHelp": "Select examples to use as reference during generation (template-linked defaults).",
+        "noExamples": "No READY examples available.",
+        "generate": "Generate preview",
+        "generating": "Generating…"
+      },
+      "step3": {
+        "preview": "Preview",
+        "usedExamples": "Generated using examples: {{count}} selected."
+      },
+      "step4": {
+        "help": "Creates a draft document. Submit for review from the document detail page.",
+        "create": "Create document"
+      }
+    },
+    "blank": {
+      "eyebrow": "Draft",
+      "title": "Blank document",
+      "subtitle": "Use placeholders like {{example}} and keep variables in sync.",
+      "defaultType": "Contract",
+      "untitled": "Untitled legal document",
+      "titlePlaceholder": "e.g. Master Services Agreement",
+      "type": "Type",
+      "typePlaceholder": "e.g. MSA",
+      "counterparty": "Counterparty",
+      "counterpartyPlaceholder": "Company / client",
+      "counterpartyEmail": "Counterparty email",
+      "dueDate": "Due date",
+      "expiryDate": "Expiry date",
+      "content": "Content",
+      "variables": "Variables",
+      "addVar": "Add variable",
+      "removeVar": "Remove variable",
+      "create": "Create document"
+    }
+  }
+  ,
+  "examples": {
+    "eyebrow": "Examples",
+    "title": "Legal examples library",
+    "subtitle": "Upload sample contracts to reuse during generation and editing.",
+    "filters": {
+      "search": "Search",
+      "searchPlaceholder": "Search filename or extracted text…",
+      "type": "Document type",
+      "template": "Template",
+      "allTemplates": "All templates",
+      "status": "Status",
+      "allStatuses": "All statuses"
+    },
+    "upload": {
+      "title": "Upload examples",
+      "subtitle": "PDF, DOCX, TXT (max 25MB). Extracted text is stored for search and retrieval.",
+      "documentType": "Document type",
+      "files": "Files",
+      "upload": "Upload",
+      "uploading": "Uploading…"
+    },
+    "empty": {
+      "title": "No examples yet",
+      "text": "Upload example contracts to build a reference library."
+    },
+    "actions": {
+      "retry": "Retry extraction",
+      "rename": "Rename",
+      "attachDetach": "Attach/Detach",
+      "delete": "Delete"
+    },
+    "table": {
+      "count": "{{count}} total",
+      "title": "Title / filename",
+      "type": "Type",
+      "template": "Template",
+      "status": "Status",
+      "uploadedBy": "Uploaded by",
+      "updated": "Updated"
+    },
+    "toast": {
+      "uploaded": "Examples uploaded.",
+      "retryQueued": "Retry started.",
+      "renamed": "Example renamed.",
+      "updated": "Example updated.",
+      "deleted": "Example deleted."
+    },
+    "errors": {
+      "failedToLoad": "Failed to load examples.",
+      "pickFiles": "Pick one or more files to upload.",
+      "failedToUpload": "Failed to upload examples.",
+      "failedToDownload": "Download failed.",
+      "failedToRetry": "Retry failed."
+    },
+    "promptRename": "Rename example",
+    "promptAttachTemplate": "Attach to template ID (leave blank to detach)",
+    "confirmDelete": "Delete example “{{name}}”?"
+  }
+}

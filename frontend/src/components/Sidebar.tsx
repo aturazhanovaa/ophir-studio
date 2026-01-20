@@ -22,9 +22,10 @@ export default function Sidebar({
     { label: tNav("items.dashboard"), path: "/dashboard" },
     { label: tNav("items.documents"), path: "/documents" },
     { label: tNav("items.knowledgeBase"), path: "/knowledge-base" },
+    ...(user ? [{ label: tNav("items.legal"), path: "/legal" }] : []),
     { label: tNav("items.askAi"), path: "/ask" },
     { label: tNav("items.playground"), path: "/playground" },
-    { label: tNav("items.analytics"), path: "/analytics" },
+    ...(user?.role === "SUPER_ADMIN" ? [{ label: tNav("items.analytics"), path: "/analytics" }] : []),
   ];
 
   if (user?.role !== "SUPER_ADMIN") {

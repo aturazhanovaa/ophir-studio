@@ -165,6 +165,10 @@ export default function UsersPanel({
               <option value="USER">USER</option>
               <option value="ADMIN">ADMIN</option>
               <option value="SUPER_ADMIN">SUPER_ADMIN</option>
+              <option value="LEGAL_ADMIN">LEGAL_ADMIN</option>
+              <option value="LEGAL_EDITOR">LEGAL_EDITOR</option>
+              <option value="LEGAL_APPROVER">LEGAL_APPROVER</option>
+              <option value="LEGAL_VIEWER">LEGAL_VIEWER</option>
             </select>
           </div>
           <div className="formGroup" style={{ gridColumn: "1 / -1" }}>

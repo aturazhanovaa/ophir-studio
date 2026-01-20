@@ -19,6 +19,7 @@ import TagsAdminPage from "./TagsAdminPage";
 import CaseStudiesPage from "./CaseStudiesPage";
 import VerifyPage from "./VerifyPage";
 import KnowledgeBasePage from "./KnowledgeBasePage";
+import LegalModule from "./legal/LegalModule";
 import { useTranslation } from "react-i18next";
 
 export default function Dashboard() {
@@ -106,6 +107,7 @@ export default function Dashboard() {
     if (path.startsWith("/admin/settings")) return tDash("pageTitles.adminSettings");
     if (path.startsWith("/ask")) return tDash("pageTitles.askAi");
     if (path.startsWith("/playground")) return tDash("pageTitles.playground");
+    if (path.startsWith("/legal")) return tDash("pageTitles.legal");
     return tDash("pageTitles.workspace");
   }, [location.pathname, tDash]);
 
@@ -147,6 +149,13 @@ export default function Dashboard() {
                 onOpenAccess={() => navigate(`/${locale}/access`)}
                 onOpenDocuments={() => navigate(`/${locale}/documents`)}
                 onOpenAsk={() => navigate(`/${locale}/ask`)}
+                onOpenLegalNew={() => navigate(`/${locale}/legal/documents/new`)}
+                canCreateLegal={
+                  user?.role === "SUPER_ADMIN" ||
+                  user?.role === "ADMIN" ||
+                  user?.role === "LEGAL_ADMIN" ||
+                  user?.role === "LEGAL_EDITOR"
+                }
               />
             }
           />
@@ -189,7 +198,16 @@ export default function Dashboard() {
                 }
               />
               <Route path="playground" element={<PlaygroundPage />} />
-              <Route path="analytics" element={<AnalyticsPanel areaId={selectedAreaId} areas={areas} />} />
+              <Route
+                path="analytics"
+                element={
+                  user?.role === "SUPER_ADMIN" ? (
+                    <AnalyticsPanel areaId={selectedAreaId} areas={areas} />
+                  ) : (
+                    <Navigate to={`/${locale}/dashboard`} replace />
+                  )
+                }
+              />
               <Route
                 path="ask"
                 element={
@@ -200,6 +218,7 @@ export default function Dashboard() {
                   />
                 }
               />
+              <Route path="legal/*" element={<LegalModule />} />
               <Route
                 path="admin/users"
                 element={

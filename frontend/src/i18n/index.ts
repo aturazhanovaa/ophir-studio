@@ -11,10 +11,12 @@ import dashboardEn from "../locales/en/dashboard.json";
 import dashboardIt from "../locales/it/dashboard.json";
 import errorsEn from "../locales/en/errors.json";
 import errorsIt from "../locales/it/errors.json";
+import legalEn from "../locales/en/legal.json";
+import legalIt from "../locales/it/legal.json";
 
 import { detectLocale, DEFAULT_LOCALE, SUPPORTED_LOCALES } from "./locale";
 
-export const I18N_NAMESPACES = ["common", "nav", "auth", "dashboard", "errors"] as const;
+export const I18N_NAMESPACES = ["common", "nav", "auth", "dashboard", "errors", "legal"] as const;
 
 const initialLanguage = typeof window !== "undefined" ? detectLocale() : DEFAULT_LOCALE;
 
@@ -26,6 +28,7 @@ void i18n.use(initReactI18next).init({
       auth: authEn,
       dashboard: dashboardEn,
       errors: errorsEn,
+      legal: legalEn,
     },
     it: {
       common: commonIt,
@@ -33,6 +36,7 @@ void i18n.use(initReactI18next).init({
       auth: authIt,
       dashboard: dashboardIt,
       errors: errorsIt,
+      legal: legalIt,
     },
   },
   lng: initialLanguage,
@@ -44,4 +48,3 @@ void i18n.use(initReactI18next).init({
 });
 
 export default i18n;
-

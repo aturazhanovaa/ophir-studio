@@ -291,36 +291,80 @@ def retrieve_candidates(db: Session, query: str, area_ids: List[int], vec_top_k:
         return ranked
 
     qvec, store = embed_query(db, normalized)
-    hits = store.search(qvec, top_k=max(vec_top_k, 20))
-
-    score_by_vid = {vid: score for vid, score in hits}
-    vids = list(score_by_vid.keys())
-
     ranked: List[Dict[str, Any]] = []
-    chunks = _get_chunks_for_vectors(db, vids, area_ids)
-    for c in chunks:
-        vec_score = score_by_vid.get(c.vector_id, 0.0)
-        vec_score = max(0.0, (vec_score + 1.0) / 2.0)  # normalize cosine to 0..1
-        kw_score, highlights = _keyword_score(query_terms, c.content)
-        hybrid = VECTOR_WEIGHT * vec_score + KEYWORD_WEIGHT * kw_score
-        ranked.append(
-            {
-                "chunk_id": c.id,
-                "chunk_index": c.chunk_index,
-                "chunk_text": c.content,
-                "heading_path": c.section or "",
-                "document_id": c.document_id,
-                "document_title": c.document.title if c.document else None,
-                "version_id": c.version_id,
-                "area_id": c.area_id,
-                "area_name": c.document.area.name if c.document and c.document.area else None,
-                "area_color": c.document.area.color if c.document and c.document.area else None,
-                "vector_score": float(vec_score),
-                "keyword_score": float(kw_score),
-                "hybrid_score": float(hybrid),
-                "highlights": highlights,
-            }
+
+    # Production: Postgres + pgvector
+    if store is None and settings.is_postgres():
+        q = np.array(qvec[0], dtype="float32")
+        q = q / (np.linalg.norm(q) + 1e-12)
+        q_list = q.tolist()
+
+        distance = Chunk.embedding.cosine_distance(q_list)  # type: ignore[attr-defined]
+        rows = (
+            db.query(Chunk, distance.label("distance"))
+            .join(Document, Document.id == Chunk.document_id)
+            .filter(Chunk.area_id.in_(area_ids))
+            .filter(Chunk.is_latest.is_(True))
+            .filter(Chunk.embedding.isnot(None))
+            .filter(Document.deleted_at.is_(None))
+            .order_by(distance.asc())
+            .limit(max(vec_top_k, 20))
+            .all()
         )
+
+        for c, dist in rows:
+            # cosine_distance range is ~[0,2] when vectors are normalized; map to [0,1]
+            vec_score = float(max(0.0, min(1.0, 1.0 - (float(dist or 0.0) / 2.0))))
+            kw_score, highlights = _keyword_score(query_terms, c.content)
+            hybrid = VECTOR_WEIGHT * vec_score + KEYWORD_WEIGHT * kw_score
+            ranked.append(
+                {
+                    "chunk_id": c.id,
+                    "chunk_index": c.chunk_index,
+                    "chunk_text": c.content,
+                    "heading_path": c.section or "",
+                    "document_id": c.document_id,
+                    "document_title": c.document.title if c.document else None,
+                    "version_id": c.version_id,
+                    "area_id": c.area_id,
+                    "area_name": c.document.area.name if c.document and c.document.area else None,
+                    "area_color": c.document.area.color if c.document and c.document.area else None,
+                    "vector_score": float(vec_score),
+                    "keyword_score": float(kw_score),
+                    "hybrid_score": float(hybrid),
+                    "highlights": highlights,
+                }
+            )
+    else:
+        # Local dev: SQLite + FAISS
+        hits = store.search(qvec, top_k=max(vec_top_k, 20))  # type: ignore[union-attr]
+
+        score_by_vid = {vid: score for vid, score in hits}
+        vids = list(score_by_vid.keys())
+        chunks = _get_chunks_for_vectors(db, vids, area_ids)
+        for c in chunks:
+            vec_score = score_by_vid.get(c.vector_id, 0.0)
+            vec_score = max(0.0, (vec_score + 1.0) / 2.0)  # normalize cosine to 0..1
+            kw_score, highlights = _keyword_score(query_terms, c.content)
+            hybrid = VECTOR_WEIGHT * vec_score + KEYWORD_WEIGHT * kw_score
+            ranked.append(
+                {
+                    "chunk_id": c.id,
+                    "chunk_index": c.chunk_index,
+                    "chunk_text": c.content,
+                    "heading_path": c.section or "",
+                    "document_id": c.document_id,
+                    "document_title": c.document.title if c.document else None,
+                    "version_id": c.version_id,
+                    "area_id": c.area_id,
+                    "area_name": c.document.area.name if c.document and c.document.area else None,
+                    "area_color": c.document.area.color if c.document and c.document.area else None,
+                    "vector_score": float(vec_score),
+                    "keyword_score": float(kw_score),
+                    "hybrid_score": float(hybrid),
+                    "highlights": highlights,
+                }
+            )
 
     ranked.sort(key=lambda item: item["hybrid_score"], reverse=True)
 

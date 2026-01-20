@@ -16,6 +16,7 @@
     "adminSettings": "Admin - Impostazioni",
     "askAi": "Chiedi all'AI",
     "playground": "Playground",
+    "legal": "Legale",
     "workspace": "Workspace"
   },
   "overview": {
@@ -27,6 +28,8 @@
     "jumpToWorkflows": "Vai ai flussi principali",
     "documentsTitle": "Documenti",
     "documentsDesc": "Cerca, filtra e gestisci i file.",
+    "legalCreateTitle": "Crea documento legale",
+    "legalCreateDesc": "Bozze di contratti e documentazione correlata.",
     "askAiTitle": "Chiedi all'AI",
     "askAiDesc": "Bozze di risposte con fonti approvate.",
     "accessCenterTitle": "Centro accessi",

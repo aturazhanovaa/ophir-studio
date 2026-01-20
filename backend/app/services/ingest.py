@@ -25,9 +25,19 @@ def ingest_document(db: Session, doc: Document, version: DocumentVersion, file_b
 
     payloads = [c["text"] for c in chunks]
     vectors, store = embed_texts(db, payloads)
-    vector_ids = store.add_vectors(vectors)
 
-    for i, (chunk, vid) in enumerate(zip(chunks, vector_ids)):
+    # Always persist embeddings to DB (JSON for SQLite; pgvector for Postgres).
+    norms = (vectors**2).sum(axis=1, keepdims=True) ** 0.5
+    norms = (norms + 1e-12)
+    vectors_norm = vectors / norms
+
+    vector_ids = None
+    if store is not None:
+        vector_ids = store.add_vectors(vectors_norm)
+
+    for i, chunk in enumerate(chunks):
+        vid = vector_ids[i] if vector_ids is not None else None
+        embedding = vectors_norm[i].astype("float32").tolist()
         db.add(
             Chunk(
                 document_id=doc.id,
@@ -37,6 +47,7 @@ def ingest_document(db: Session, doc: Document, version: DocumentVersion, file_b
                 content=chunk["text"],
                 section=chunk.get("heading_path") or None,
                 vector_id=vid,
+                embedding=embedding,
                 is_latest=True,
             )
         )
